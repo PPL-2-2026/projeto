@@ -1,0 +1,41 @@
+# Uso:
+#   docker compose run --rm baseline
+#   docker compose run --rm mergesort
+#   docker compose run --rm mergesect
+#   N=1000000 docker compose run --rm mergesect      # tamanho do vetor
+#   THREADS=8 docker compose run --rm mergesect      # threads OpenMP
+#
+# O código é montado como volume e compilado a cada execução,
+# então não é preciso rebuild da imagem ao editar os .cpp.
+
+x-cpp: &cpp
+  build: .
+  image: mergesort-cpp
+  working_dir: /app
+  user: "${UID:-1000}:${GID:-1000}"
+  volumes:
+    - .:/app
+  environment:
+    OMP_NUM_THREADS: ${THREADS:-4}
+
+services:
+  baseline:
+    <<: *cpp
+    command: >
+      sh -c 'mkdir -p bin &&
+             g++ -O2 -o bin/baseline "baseline e perfilamento/baseline.cpp" &&
+             ./bin/baseline ${N:-20000000}'
+
+  mergesort:
+    <<: *cpp
+    command: >
+      sh -c 'mkdir -p bin &&
+             g++ -O2 -o bin/mergesort mergesort.cpp &&
+             ./bin/mergesort ${N:-20000000}'
+
+  mergesect:
+    <<: *cpp
+    command: >
+      sh -c 'mkdir -p bin &&
+             g++ -O2 -fopenmp -o bin/mergesect mergesect.cpp &&
+             ./bin/mergesect ${N:-20000000}'
