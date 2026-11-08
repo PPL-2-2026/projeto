@@ -1,6 +1,6 @@
 # Uso:
-#   make baseline | make mergesort | make mergesect
-#   make all                      # roda os três em sequência
+#   make baseline | make mergesort | make mergesect | make perfilamento
+#   make all                      # roda baseline, mergesort e mergesect
 #   make mergesect N=1000000 THREADS=8
 #   make clean
 
@@ -13,14 +13,14 @@ export GID := $(shell id -g)
 
 COMPOSE := docker compose run --rm --quiet-pull
 
-.PHONY: all build baseline mergesort mergesect clean
+.PHONY: all build baseline mergesort mergesect perfilamento clean
 
 all: baseline mergesort mergesect
 
 build:
 	docker compose build
 
-baseline mergesort mergesect: build
+baseline mergesort mergesect perfilamento: build
 	@echo "== $@ (N=$(N), THREADS=$(THREADS))"
 	@$(COMPOSE) $@
 

@@ -2,6 +2,7 @@
 #   docker compose run --rm baseline
 #   docker compose run --rm mergesort
 #   docker compose run --rm mergesect
+#   docker compose run --rm perfilamento
 #   N=1000000 docker compose run --rm mergesect      # tamanho do vetor
 #   THREADS=8 docker compose run --rm mergesect      # threads OpenMP
 #
@@ -39,3 +40,10 @@ services:
       sh -c 'mkdir -p bin &&
              g++ -O2 -fopenmp -o bin/mergesect mergesect.cpp &&
              ./bin/mergesect ${N:-20000000}'
+
+  perfilamento:
+    <<: *cpp
+    command: >
+      sh -c 'mkdir -p bin &&
+             g++ -O2 -g -fopenmp -o bin/perfilamento "baseline e perfilamento/perfilamento.cpp" &&
+             ./bin/perfilamento ${N:-20000000}'
