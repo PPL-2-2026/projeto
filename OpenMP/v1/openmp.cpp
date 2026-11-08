@@ -1,15 +1,9 @@
-/* Baseline 07 — Mergesort (ordenacao por divisao e conquista)
- * IESB 2026/2 — CCO085 — Prof. Rodrigo Goncalves Pinto
- * Aspecto interessante: divisao e conquista; alvo natural de OpenMP tasks.
- *
- * Compilar: g++ -O2 -o 07_mergesort 07_mergesort.cpp
- * Executar: ./07_mergesort 20000000   (tamanho do vetor)
- */
 #include <cstdio>
 #include <cstdlib>
 #include <vector>
 #include <cstdint>
 #include <ctime>
+#include <omp.h>
 using namespace std;
 
 static double agora() {
@@ -19,16 +13,30 @@ static double agora() {
 
 static void merge(vector<int>& a, vector<int>& tmp, int lo, int mid, int hi) {
     int i = lo, j = mid, k = lo;
-    while (i < mid && j < hi) tmp[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];
-    while (i < mid) tmp[k++] = a[i++];
-    while (j < hi)  tmp[k++] = a[j++];
-    for (int t = lo; t < hi; t++) a[t] = tmp[t];
+     
+        while (i < mid && j < hi) tmp[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];
+        while (i < mid) tmp[k++] = a[i++];
+        while (j < hi)  tmp[k++] = a[j++];
+    
+        #pragma omp parallel for num_threads(6)
+            for (int t = lo; t < hi; t++) a[t] = tmp[t];        
 }
+
 static void msort(vector<int>& a, vector<int>& tmp, int lo, int hi) {
     if (hi - lo <= 1) return;
     int mid = (lo + hi) / 2;
-    msort(a, tmp, lo, mid);
-    msort(a, tmp, mid, hi);
+
+    #pragma omp parallel sections
+    {
+        #pragma omp section
+        {
+            msort(a, tmp, lo, mid);
+        }
+        #pragma omp section
+        {
+            msort(a, tmp, mid, hi);
+        }
+    }
     merge(a, tmp, lo, mid, hi);
 }
 
