@@ -9,12 +9,9 @@
 #include <ctime>
 #include <vector>
 #include <algorithm>
+#include "../utils/baseline.h"
+#include "../utils/perfilamento.h"
 using namespace std;
-
-static double agora() {
-    timespec t; clock_gettime(CLOCK_MONOTONIC, &t);
-    return t.tv_sec + t.tv_nsec * 1e-9;
-}
 
 /* ---------- algoritmo original (igual ao baseline.cpp) ---------- */
 static void merge(vector<int>& a, vector<int>& tmp, int lo, int mid, int hi) {
@@ -32,26 +29,12 @@ static void msort(vector<int>& a, vector<int>& tmp, int lo, int hi) {
     merge(a, tmp, lo, mid, hi);
 }
 
-/* Gera o vetor de entrada exatamente como o baseline.cpp (semente fixa) */
-static void gerar_vetor(vector<int>& a) {
-    uint64_t s = 12345;
-    for (size_t i = 0; i < a.size(); i++) { s = s*6364136223846793005ULL + 1; a[i] = (int)(s >> 33); }
-}
-
 static bool ordenado(const vector<int>& a) {
     for (size_t i = 1; i < a.size(); i++) if (a[i - 1] > a[i]) return false;
     return true;
 }
 
 /* ---------- versão instrumentada ---------- */
-struct Nivel {
-    long long merges = 0;
-    int tamanho = 0; // tamanho do trecho neste nível
-    double sort = 0.0; // laços while (monta o resultado do sort em tmp)
-    double copia = 0.0; // laço for (copia tmp de volta para a)
-    double maior = 0.0; // maior merge individual do nível
-};
-
 /* As chamadas do clock também têm um custo em tempo (~36 ns cada) e nos níveis
  * inferiores do merge esse custo acaba ficando maior que o custo do próprio
  * merge. Então nós implementamos um numero de corte e qualquer subárvore com
@@ -62,20 +45,11 @@ static vector<Nivel> niveis;
 static void merge_perfilamento(vector<int>& a, vector<int>& tmp,
                                int lo, int mid, int hi, int nivel) {
     double t0 = agora();
-    int i = lo, j = mid, k = lo;
-    while (i < mid && j < hi) tmp[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];
-    while (i < mid) tmp[k++] = a[i++];
-    while (j < hi) tmp[k++] = a[j++];
+    intercala(a, tmp, lo, mid, mid, hi, lo);
     double t1 = agora();
     for (int t = lo; t < hi; t++) a[t] = tmp[t];
     double t2 = agora();
-
-    if ((int)niveis.size() <= nivel) niveis.resize(nivel + 1);
-    niveis[nivel].merges++;
-    niveis[nivel].tamanho = max(niveis[nivel].tamanho, hi - lo);
-    niveis[nivel].sort += t1 - t0;
-    niveis[nivel].copia += t2 - t1;
-    niveis[nivel].maior = max(niveis[nivel].maior, t2 - t0);
+    registrar(niveis, nivel, hi - lo, t1 - t0, t2 - t1);
 }
 
 static void msort_perfilamento(vector<int>& a, vector<int>& tmp, int lo, int hi, int nivel) {
