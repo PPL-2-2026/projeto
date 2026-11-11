@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500" font-family="Arial, Helvetica, sans-serif" font-size="13" role="img" aria-labelledby="titulo descricao">
+<title id="titulo">Tempo de ordenação por número de threads</title>
+<desc id="descricao">Comparação dos tempos médios da Fase 1 do baseline, OpenMP v1 e OpenMP v2 para 20 e 50 milhões de elementos. Dois painéis com escalas verticais diferentes, ambas começando em zero. Média de dez execuções após duas de aquecimento.</desc>
+<rect width="1000" height="500" fill="#ffffff"/>
+<text x="500" y="26" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2230">Tempo de ordenação por número de threads</text>
+<line x1="265.00" y1="53.00" x2="293.00" y2="53.00" stroke="#9aa3b2" stroke-width="2.5" stroke-dasharray="6 5"/>
+<text x="301" y="57" fill="#1a2230">Baseline sequencial</text>
+<line x1="465.00" y1="53.00" x2="493.00" y2="53.00" stroke="#2f6fd6" stroke-width="2.5"/>
+<text x="501" y="57" fill="#1a2230">OpenMP v1</text>
+<line x1="635.00" y1="53.00" x2="663.00" y2="53.00" stroke="#c8721a" stroke-width="2.5"/>
+<text x="671" y="57" fill="#1a2230">OpenMP v2</text>
+<text x="265.0" y="88" text-anchor="middle" font-weight="bold" fill="#1a2230">n = 20.000.000</text>
+<line x1="70.00" y1="395.00" x2="460.00" y2="395.00" stroke="#e3e7ee" />
+<text x="62" y="399.0" text-anchor="end" fill="#4a5466">0</text>
+<line x1="70.00" y1="346.67" x2="460.00" y2="346.67" stroke="#e3e7ee" />
+<text x="62" y="350.67" text-anchor="end" fill="#4a5466">0,5</text>
+<line x1="70.00" y1="298.33" x2="460.00" y2="298.33" stroke="#e3e7ee" />
+<text x="62" y="302.33" text-anchor="end" fill="#4a5466">1</text>
+<line x1="70.00" y1="250.00" x2="460.00" y2="250.00" stroke="#e3e7ee" />
+<text x="62" y="254.0" text-anchor="end" fill="#4a5466">1,5</text>
+<line x1="70.00" y1="201.67" x2="460.00" y2="201.67" stroke="#e3e7ee" />
+<text x="62" y="205.67" text-anchor="end" fill="#4a5466">2</text>
+<line x1="70.00" y1="153.33" x2="460.00" y2="153.33" stroke="#e3e7ee" />
+<text x="62" y="157.33" text-anchor="end" fill="#4a5466">2,5</text>
+<line x1="70.00" y1="105.00" x2="460.00" y2="105.00" stroke="#e3e7ee" />
+<text x="62" y="109.0" text-anchor="end" fill="#4a5466">3</text>
+<line x1="94.38" y1="105.00" x2="94.38" y2="395.00" stroke="#e3e7ee" />
+<text x="94.38" y="415" text-anchor="middle" fill="#4a5466">1</text>
+<line x1="118.75" y1="105.00" x2="118.75" y2="395.00" stroke="#e3e7ee" />
+<text x="118.75" y="415" text-anchor="middle" fill="#4a5466">2</text>
+<line x1="167.50" y1="105.00" x2="167.50" y2="395.00" stroke="#e3e7ee" />
+<text x="167.5" y="415" text-anchor="middle" fill="#4a5466">4</text>
+<line x1="265.00" y1="105.00" x2="265.00" y2="395.00" stroke="#e3e7ee" />
+<text x="265.0" y="415" text-anchor="middle" fill="#4a5466">8</text>
+<line x1="460.00" y1="105.00" x2="460.00" y2="395.00" stroke="#e3e7ee" />
+<text x="460.0" y="415" text-anchor="middle" fill="#4a5466">16</text>
+<line x1="70.00" y1="395.00" x2="460.00" y2="395.00" stroke="#4a5466" />
+<line x1="70.00" y1="105.00" x2="70.00" y2="395.00" stroke="#4a5466" />
+<text x="265.0" y="442" text-anchor="middle" fill="#1a2230">Número de threads</text>
+<text x="22" y="250" text-anchor="middle" fill="#1a2230" transform="rotate(-90 22 250)">Tempo médio (s)</text>
+<line x1="70.00" y1="160.24" x2="460.00" y2="160.24" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="454" y="152.24" text-anchor="end" font-size="12" fill="#4a5466">baseline: 2,42855 s</text>
+<polyline points="94.38,147.59 118.75,266.50 167.50,319.99 265.00,340.30 460.00,346.83" fill="none" stroke="#2f6fd6" stroke-width="2.5"/>
+<circle cx="94.38" cy="147.59" r="4.5" fill="#2f6fd6"><title>OpenMP v1; threads=1; tempo=2,55939 s</title></circle>
+<circle cx="118.75" cy="266.50" r="4.5" fill="#2f6fd6"><title>OpenMP v1; threads=2; tempo=1,32935 s</title></circle>
+<circle cx="167.50" cy="319.99" r="4.5" fill="#2f6fd6"><title>OpenMP v1; threads=4; tempo=0,77598 s</title></circle>
+<circle cx="265.00" cy="340.30" r="4.5" fill="#2f6fd6"><title>OpenMP v1; threads=8; tempo=0,56588 s</title></circle>
+<circle cx="460.00" cy="346.83" r="4.5" fill="#2f6fd6"><title>OpenMP v1; threads=16; tempo=0,49827 s</title></circle>
+<text x="452" y="337.83" text-anchor="end" font-size="12" fill="#2f6fd6">0,49827 s</text>
+<polyline points="94.38,155.98 118.75,274.08 167.50,332.91 265.00,358.20 460.00,365.11" fill="none" stroke="#c8721a" stroke-width="2.5"/>
+<rect x="90.38" y="151.98" width="8" height="8" fill="#c8721a"><title>OpenMP v2; threads=1; tempo=2,47263 s</title></rect>
+<rect x="114.75" y="270.08" width="8" height="8" fill="#c8721a"><title>OpenMP v2; threads=2; tempo=1,25090 s</title></rect>
+<rect x="163.50" y="328.91" width="8" height="8" fill="#c8721a"><title>OpenMP v2; threads=4; tempo=0,64233 s</title></rect>
+<rect x="261.00" y="354.20" width="8" height="8" fill="#c8721a"><title>OpenMP v2; threads=8; tempo=0,38072 s</title></rect>
+<rect x="456.00" y="361.11" width="8" height="8" fill="#c8721a"><title>OpenMP v2; threads=16; tempo=0,30923 s</title></rect>
+<text x="452" y="385.11" text-anchor="end" font-size="12" fill="#c8721a">0,30923 s</text>
+<text x="765.0" y="88" text-anchor="middle" font-weight="bold" fill="#1a2230">n = 50.000.000</text>
+<line x1="570.00" y1="395.00" x2="960.00" y2="395.00" stroke="#e3e7ee" />
+<text x="562" y="399.0" text-anchor="end" fill="#4a5466">0</text>
+<line x1="570.00" y1="353.57" x2="960.00" y2="353.57" stroke="#e3e7ee" />
+<text x="562" y="357.57" text-anchor="end" fill="#4a5466">1</text>
+<line x1="570.00" y1="312.14" x2="960.00" y2="312.14" stroke="#e3e7ee" />
+<text x="562" y="316.14" text-anchor="end" fill="#4a5466">2</text>
+<line x1="570.00" y1="270.71" x2="960.00" y2="270.71" stroke="#e3e7ee" />
+<text x="562" y="274.71" text-anchor="end" fill="#4a5466">3</text>
+<line x1="570.00" y1="229.29" x2="960.00" y2="229.29" stroke="#e3e7ee" />
+<text x="562" y="233.29" text-anchor="end" fill="#4a5466">4</text>
+<line x1="570.00" y1="187.86" x2="960.00" y2="187.86" stroke="#e3e7ee" />
+<text x="562" y="191.86" text-anchor="end" fill="#4a5466">5</text>
+<line x1="570.00" y1="146.43" x2="960.00" y2="146.43" stroke="#e3e7ee" />
+<text x="562" y="150.43" text-anchor="end" fill="#4a5466">6</text>
+<line x1="570.00" y1="105.00" x2="960.00" y2="105.00" stroke="#e3e7ee" />
+<text x="562" y="109.0" text-anchor="end" fill="#4a5466">7</text>
+<line x1="594.38" y1="105.00" x2="594.38" y2="395.00" stroke="#e3e7ee" />
+<text x="594.38" y="415" text-anchor="middle" fill="#4a5466">1</text>
+<line x1="618.75" y1="105.00" x2="618.75" y2="395.00" stroke="#e3e7ee" />
+<text x="618.75" y="415" text-anchor="middle" fill="#4a5466">2</text>
+<line x1="667.50" y1="105.00" x2="667.50" y2="395.00" stroke="#e3e7ee" />
+<text x="667.5" y="415" text-anchor="middle" fill="#4a5466">4</text>
+<line x1="765.00" y1="105.00" x2="765.00" y2="395.00" stroke="#e3e7ee" />
+<text x="765.0" y="415" text-anchor="middle" fill="#4a5466">8</text>
+<line x1="960.00" y1="105.00" x2="960.00" y2="395.00" stroke="#e3e7ee" />
+<text x="960.0" y="415" text-anchor="middle" fill="#4a5466">16</text>
+<line x1="570.00" y1="395.00" x2="960.00" y2="395.00" stroke="#4a5466" />
+<line x1="570.00" y1="105.00" x2="570.00" y2="395.00" stroke="#4a5466" />
+<text x="765.0" y="442" text-anchor="middle" fill="#1a2230">Número de threads</text>
+<text x="522" y="250" text-anchor="middle" fill="#1a2230" transform="rotate(-90 522 250)">Tempo médio (s)</text>
+<line x1="570.00" y1="117.22" x2="960.00" y2="117.22" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="954" y="109.22" text-anchor="end" font-size="12" fill="#4a5466">baseline: 6,70504 s</text>
+<polyline points="594.38,115.97 618.75,250.10 667.50,309.86 765.00,333.63 960.00,337.25" fill="none" stroke="#2f6fd6" stroke-width="2.5"/>
+<circle cx="594.38" cy="115.97" r="4.5" fill="#2f6fd6"><title>OpenMP v1; threads=1; tempo=6,73517 s</title></circle>
+<circle cx="618.75" cy="250.10" r="4.5" fill="#2f6fd6"><title>OpenMP v1; threads=2; tempo=3,49749 s</title></circle>
+<circle cx="667.50" cy="309.86" r="4.5" fill="#2f6fd6"><title>OpenMP v1; threads=4; tempo=2,05514 s</title></circle>
+<circle cx="765.00" cy="333.63" r="4.5" fill="#2f6fd6"><title>OpenMP v1; threads=8; tempo=1,48132 s</title></circle>
+<circle cx="960.00" cy="337.25" r="4.5" fill="#2f6fd6"><title>OpenMP v1; threads=16; tempo=1,39397 s</title></circle>
+<text x="952" y="328.25" text-anchor="end" font-size="12" fill="#2f6fd6">1,39397 s</text>
+<polyline points="594.38,122.00 618.75,257.83 667.50,323.57 765.00,353.02 960.00,362.64" fill="none" stroke="#c8721a" stroke-width="2.5"/>
+<rect x="590.38" y="118.00" width="8" height="8" fill="#c8721a"><title>OpenMP v2; threads=1; tempo=6,58975 s</title></rect>
+<rect x="614.75" y="253.83" width="8" height="8" fill="#c8721a"><title>OpenMP v2; threads=2; tempo=3,31091 s</title></rect>
+<rect x="663.50" y="319.57" width="8" height="8" fill="#c8721a"><title>OpenMP v2; threads=4; tempo=1,72408 s</title></rect>
+<rect x="761.00" y="349.02" width="8" height="8" fill="#c8721a"><title>OpenMP v2; threads=8; tempo=1,01334 s</title></rect>
+<rect x="956.00" y="358.64" width="8" height="8" fill="#c8721a"><title>OpenMP v2; threads=16; tempo=0,78109 s</title></rect>
+<text x="952" y="382.64" text-anchor="end" font-size="12" fill="#c8721a">0,78109 s</text>
+<text x="500" y="477" text-anchor="middle" font-size="12" fill="#4a5466">Fase 1, sem instrumentação · Média de 10 execuções após 2 de aquecimento · Escalas verticais distintas</text>
+</svg>
