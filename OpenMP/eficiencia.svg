@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" font-family="Arial, Helvetica, sans-serif" font-size="13" role="img" aria-labelledby="titulo descricao">
+<title id="titulo">Eficiência paralela por número de threads</title>
+<desc id="descricao">Comparação de OpenMP v1 e v2 para 20 e 50 milhões de elementos. Eficiência = tempo do baseline / (threads × tempo paralelo) × 100. Ambos os painéis usam escala de 0 a 110%, com referência ideal em 100%. Tempos médios da Fase 1, com dez execuções após duas de aquecimento. Valores acima de 100% são preservados e não demonstram, isoladamente, uma vantagem estatística.</desc>
+<rect width="1000" height="520" fill="#ffffff"/>
+<!-- Fontes: baseline e perfilamento/perfilamento.md; OpenMP/v1/v1.md; OpenMP/v2/v2.md. Calculado a partir dos tempos, sem arredondamento intermediário do speedup. -->
+<text x="500" y="26" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2230">Eficiência paralela por número de threads</text>
+<line x1="265.00" y1="53.00" x2="293.00" y2="53.00" stroke="#9aa3b2" stroke-width="2.5" stroke-dasharray="6 5"/>
+<text x="301" y="57" fill="#1a2230">Ideal (100%)</text>
+<line x1="465.00" y1="53.00" x2="493.00" y2="53.00" stroke="#2f6fd6" stroke-width="2.5"/>
+<circle cx="479" cy="53" r="4.5" fill="#2f6fd6"/>
+<text x="501" y="57" fill="#1a2230">OpenMP v1</text>
+<line x1="635.00" y1="53.00" x2="663.00" y2="53.00" stroke="#c8721a" stroke-width="2.5"/>
+<rect x="645" y="49" width="8" height="8" fill="#c8721a"/>
+<text x="671" y="57" fill="#1a2230">OpenMP v2</text>
+<text x="265" y="88" text-anchor="middle" font-weight="bold" fill="#1a2230">n = 20.000.000</text>
+<line x1="70.00" y1="395.00" x2="460.00" y2="395.00" stroke="#e3e7ee" />
+<text x="62" y="399.0" text-anchor="end" fill="#4a5466">0%</text>
+<line x1="70.00" y1="368.64" x2="460.00" y2="368.64" stroke="#e3e7ee" />
+<text x="62" y="372.64" text-anchor="end" fill="#4a5466">10%</text>
+<line x1="70.00" y1="342.27" x2="460.00" y2="342.27" stroke="#e3e7ee" />
+<text x="62" y="346.27" text-anchor="end" fill="#4a5466">20%</text>
+<line x1="70.00" y1="315.91" x2="460.00" y2="315.91" stroke="#e3e7ee" />
+<text x="62" y="319.91" text-anchor="end" fill="#4a5466">30%</text>
+<line x1="70.00" y1="289.55" x2="460.00" y2="289.55" stroke="#e3e7ee" />
+<text x="62" y="293.55" text-anchor="end" fill="#4a5466">40%</text>
+<line x1="70.00" y1="263.18" x2="460.00" y2="263.18" stroke="#e3e7ee" />
+<text x="62" y="267.18" text-anchor="end" fill="#4a5466">50%</text>
+<line x1="70.00" y1="236.82" x2="460.00" y2="236.82" stroke="#e3e7ee" />
+<text x="62" y="240.82" text-anchor="end" fill="#4a5466">60%</text>
+<line x1="70.00" y1="210.45" x2="460.00" y2="210.45" stroke="#e3e7ee" />
+<text x="62" y="214.45" text-anchor="end" fill="#4a5466">70%</text>
+<line x1="70.00" y1="184.09" x2="460.00" y2="184.09" stroke="#e3e7ee" />
+<text x="62" y="188.09" text-anchor="end" fill="#4a5466">80%</text>
+<line x1="70.00" y1="157.73" x2="460.00" y2="157.73" stroke="#e3e7ee" />
+<text x="62" y="161.73" text-anchor="end" fill="#4a5466">90%</text>
+<line x1="70.00" y1="131.36" x2="460.00" y2="131.36" stroke="#e3e7ee" />
+<text x="62" y="135.36" text-anchor="end" fill="#4a5466">100%</text>
+<line x1="70.00" y1="105.00" x2="460.00" y2="105.00" stroke="#e3e7ee" />
+<text x="62" y="109.0" text-anchor="end" fill="#4a5466">110%</text>
+<line x1="94.38" y1="105.00" x2="94.38" y2="395.00" stroke="#e3e7ee" />
+<text x="94.38" y="415" text-anchor="middle" fill="#4a5466">1</text>
+<line x1="118.75" y1="105.00" x2="118.75" y2="395.00" stroke="#e3e7ee" />
+<text x="118.75" y="415" text-anchor="middle" fill="#4a5466">2</text>
+<line x1="167.50" y1="105.00" x2="167.50" y2="395.00" stroke="#e3e7ee" />
+<text x="167.5" y="415" text-anchor="middle" fill="#4a5466">4</text>
+<line x1="265.00" y1="105.00" x2="265.00" y2="395.00" stroke="#e3e7ee" />
+<text x="265.0" y="415" text-anchor="middle" fill="#4a5466">8</text>
+<line x1="460.00" y1="105.00" x2="460.00" y2="395.00" stroke="#e3e7ee" />
+<text x="460.0" y="415" text-anchor="middle" fill="#4a5466">16</text>
+<line x1="70.00" y1="395.00" x2="460.00" y2="395.00" stroke="#4a5466" />
+<line x1="70.00" y1="105.00" x2="70.00" y2="395.00" stroke="#4a5466" />
+<line x1="70.00" y1="131.36" x2="460.00" y2="131.36" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="265" y="442" text-anchor="middle" fill="#1a2230">Número de threads</text>
+<text x="22" y="250" text-anchor="middle" fill="#1a2230" transform="rotate(-90 22 250)">Eficiência paralela (%)</text>
+<polyline points="94.38,144.84 118.75,154.19 167.50,188.73 265.00,253.57 460.00,314.69" fill="none" stroke="#2f6fd6" stroke-width="2.5"/>
+<circle cx="94.38" cy="144.84" r="4.5" fill="#2f6fd6"><title>OpenMP v1; n=20000000; threads=1; eficiência=94,89%</title></circle>
+<circle cx="118.75" cy="154.19" r="4.5" fill="#2f6fd6"><title>OpenMP v1; n=20000000; threads=2; eficiência=91,34%</title></circle>
+<circle cx="167.50" cy="188.73" r="4.5" fill="#2f6fd6"><title>OpenMP v1; n=20000000; threads=4; eficiência=78,24%</title></circle>
+<circle cx="265.00" cy="253.57" r="4.5" fill="#2f6fd6"><title>OpenMP v1; n=20000000; threads=8; eficiência=53,65%</title></circle>
+<circle cx="460.00" cy="314.69" r="4.5" fill="#2f6fd6"><title>OpenMP v1; n=20000000; threads=16; eficiência=30,46%</title></circle>
+<text x="452" y="304.69" text-anchor="end" font-size="12" fill="#2f6fd6">30,5%</text>
+<polyline points="94.38,136.06 118.75,139.08 167.50,145.81 265.00,184.79 460.00,265.60" fill="none" stroke="#c8721a" stroke-width="2.5"/>
+<rect x="90.38" y="132.06" width="8" height="8" fill="#c8721a"><title>OpenMP v2; n=20000000; threads=1; eficiência=98,22%</title></rect>
+<rect x="114.75" y="135.08" width="8" height="8" fill="#c8721a"><title>OpenMP v2; n=20000000; threads=2; eficiência=97,07%</title></rect>
+<rect x="163.50" y="141.81" width="8" height="8" fill="#c8721a"><title>OpenMP v2; n=20000000; threads=4; eficiência=94,52%</title></rect>
+<rect x="261.00" y="180.79" width="8" height="8" fill="#c8721a"><title>OpenMP v2; n=20000000; threads=8; eficiência=79,74%</title></rect>
+<rect x="456.00" y="261.60" width="8" height="8" fill="#c8721a"><title>OpenMP v2; n=20000000; threads=16; eficiência=49,08%</title></rect>
+<text x="452" y="255.6" text-anchor="end" font-size="12" fill="#c8721a">49,1%</text>
+<text x="765" y="88" text-anchor="middle" font-weight="bold" fill="#1a2230">n = 50.000.000</text>
+<line x1="570.00" y1="395.00" x2="960.00" y2="395.00" stroke="#e3e7ee" />
+<text x="562" y="399.0" text-anchor="end" fill="#4a5466">0%</text>
+<line x1="570.00" y1="368.64" x2="960.00" y2="368.64" stroke="#e3e7ee" />
+<text x="562" y="372.64" text-anchor="end" fill="#4a5466">10%</text>
+<line x1="570.00" y1="342.27" x2="960.00" y2="342.27" stroke="#e3e7ee" />
+<text x="562" y="346.27" text-anchor="end" fill="#4a5466">20%</text>
+<line x1="570.00" y1="315.91" x2="960.00" y2="315.91" stroke="#e3e7ee" />
+<text x="562" y="319.91" text-anchor="end" fill="#4a5466">30%</text>
+<line x1="570.00" y1="289.55" x2="960.00" y2="289.55" stroke="#e3e7ee" />
+<text x="562" y="293.55" text-anchor="end" fill="#4a5466">40%</text>
+<line x1="570.00" y1="263.18" x2="960.00" y2="263.18" stroke="#e3e7ee" />
+<text x="562" y="267.18" text-anchor="end" fill="#4a5466">50%</text>
+<line x1="570.00" y1="236.82" x2="960.00" y2="236.82" stroke="#e3e7ee" />
+<text x="562" y="240.82" text-anchor="end" fill="#4a5466">60%</text>
+<line x1="570.00" y1="210.45" x2="960.00" y2="210.45" stroke="#e3e7ee" />
+<text x="562" y="214.45" text-anchor="end" fill="#4a5466">70%</text>
+<line x1="570.00" y1="184.09" x2="960.00" y2="184.09" stroke="#e3e7ee" />
+<text x="562" y="188.09" text-anchor="end" fill="#4a5466">80%</text>
+<line x1="570.00" y1="157.73" x2="960.00" y2="157.73" stroke="#e3e7ee" />
+<text x="562" y="161.73" text-anchor="end" fill="#4a5466">90%</text>
+<line x1="570.00" y1="131.36" x2="960.00" y2="131.36" stroke="#e3e7ee" />
+<text x="562" y="135.36" text-anchor="end" fill="#4a5466">100%</text>
+<line x1="570.00" y1="105.00" x2="960.00" y2="105.00" stroke="#e3e7ee" />
+<text x="562" y="109.0" text-anchor="end" fill="#4a5466">110%</text>
+<line x1="594.38" y1="105.00" x2="594.38" y2="395.00" stroke="#e3e7ee" />
+<text x="594.38" y="415" text-anchor="middle" fill="#4a5466">1</text>
+<line x1="618.75" y1="105.00" x2="618.75" y2="395.00" stroke="#e3e7ee" />
+<text x="618.75" y="415" text-anchor="middle" fill="#4a5466">2</text>
+<line x1="667.50" y1="105.00" x2="667.50" y2="395.00" stroke="#e3e7ee" />
+<text x="667.5" y="415" text-anchor="middle" fill="#4a5466">4</text>
+<line x1="765.00" y1="105.00" x2="765.00" y2="395.00" stroke="#e3e7ee" />
+<text x="765.0" y="415" text-anchor="middle" fill="#4a5466">8</text>
+<line x1="960.00" y1="105.00" x2="960.00" y2="395.00" stroke="#e3e7ee" />
+<text x="960.0" y="415" text-anchor="middle" fill="#4a5466">16</text>
+<line x1="570.00" y1="395.00" x2="960.00" y2="395.00" stroke="#4a5466" />
+<line x1="570.00" y1="105.00" x2="570.00" y2="395.00" stroke="#4a5466" />
+<line x1="570.00" y1="131.36" x2="960.00" y2="131.36" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="765" y="442" text-anchor="middle" fill="#1a2230">Número de threads</text>
+<text x="522" y="250" text-anchor="middle" fill="#1a2230" transform="rotate(-90 522 250)">Eficiência paralela (%)</text>
+<polyline points="594.38,132.54 618.75,142.29 667.50,179.97 765.00,245.83 960.00,315.74" fill="none" stroke="#2f6fd6" stroke-width="2.5"/>
+<circle cx="594.38" cy="132.54" r="4.5" fill="#2f6fd6"><title>OpenMP v1; n=50000000; threads=1; eficiência=99,55%</title></circle>
+<circle cx="618.75" cy="142.29" r="4.5" fill="#2f6fd6"><title>OpenMP v1; n=50000000; threads=2; eficiência=95,86%</title></circle>
+<circle cx="667.50" cy="179.97" r="4.5" fill="#2f6fd6"><title>OpenMP v1; n=50000000; threads=4; eficiência=81,56%</title></circle>
+<circle cx="765.00" cy="245.83" r="4.5" fill="#2f6fd6"><title>OpenMP v1; n=50000000; threads=8; eficiência=56,58%</title></circle>
+<circle cx="960.00" cy="315.74" r="4.5" fill="#2f6fd6"><title>OpenMP v1; n=50000000; threads=16; eficiência=30,06%</title></circle>
+<text x="952" y="305.74" text-anchor="end" font-size="12" fill="#2f6fd6">30,1%</text>
+<polyline points="594.38,126.75 618.75,128.05 667.50,138.68 765.00,176.95 960.00,253.56" fill="none" stroke="#c8721a" stroke-width="2.5"/>
+<rect x="590.38" y="122.75" width="8" height="8" fill="#c8721a"><title>OpenMP v2; n=50000000; threads=1; eficiência=101,75%</title></rect>
+<rect x="614.75" y="124.05" width="8" height="8" fill="#c8721a"><title>OpenMP v2; n=50000000; threads=2; eficiência=101,26%</title></rect>
+<rect x="663.50" y="134.68" width="8" height="8" fill="#c8721a"><title>OpenMP v2; n=50000000; threads=4; eficiência=97,23%</title></rect>
+<rect x="761.00" y="172.95" width="8" height="8" fill="#c8721a"><title>OpenMP v2; n=50000000; threads=8; eficiência=82,71%</title></rect>
+<rect x="956.00" y="249.56" width="8" height="8" fill="#c8721a"><title>OpenMP v2; n=50000000; threads=16; eficiência=53,65%</title></rect>
+<text x="952" y="243.56" text-anchor="end" font-size="12" fill="#c8721a">53,7%</text>
+<text x="500" y="475" text-anchor="middle" font-size="12" fill="#4a5466">Eficiência = tempo do baseline / (threads × tempo paralelo) × 100</text>
+<text x="500" y="497" text-anchor="middle" font-size="12" fill="#4a5466">Fase 1 · Média de 10 execuções após 2 de aquecimento · Mesma escala vertical nos dois painéis</text>
+</svg>
