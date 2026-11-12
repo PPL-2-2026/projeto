@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="440" viewBox="0 0 680 440" font-family="Arial, Helvetica, sans-serif" font-size="13">
+<rect width="680" height="440" fill="#ffffff"/>
+<text x="340" y="24" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2230">Speedup da versão MPI (v1) em relação ao baseline</text>
+<line x1="70" y1="370.0" x2="650" y2="370.0" stroke="#e3e7ee"/>
+<text x="62" y="374.0" text-anchor="end" fill="#4a5466">0×</text>
+<line x1="70" y1="328.8" x2="650" y2="328.8" stroke="#e3e7ee"/>
+<text x="62" y="332.8" text-anchor="end" fill="#4a5466">2×</text>
+<line x1="70" y1="287.5" x2="650" y2="287.5" stroke="#e3e7ee"/>
+<text x="62" y="291.5" text-anchor="end" fill="#4a5466">4×</text>
+<line x1="70" y1="246.2" x2="650" y2="246.2" stroke="#e3e7ee"/>
+<text x="62" y="250.2" text-anchor="end" fill="#4a5466">6×</text>
+<line x1="70" y1="205.0" x2="650" y2="205.0" stroke="#e3e7ee"/>
+<text x="62" y="209.0" text-anchor="end" fill="#4a5466">8×</text>
+<line x1="70" y1="163.8" x2="650" y2="163.8" stroke="#e3e7ee"/>
+<text x="62" y="167.8" text-anchor="end" fill="#4a5466">10×</text>
+<line x1="70" y1="122.5" x2="650" y2="122.5" stroke="#e3e7ee"/>
+<text x="62" y="126.5" text-anchor="end" fill="#4a5466">12×</text>
+<line x1="70" y1="81.2" x2="650" y2="81.2" stroke="#e3e7ee"/>
+<text x="62" y="85.2" text-anchor="end" fill="#4a5466">14×</text>
+<line x1="70" y1="40.0" x2="650" y2="40.0" stroke="#e3e7ee"/>
+<text x="62" y="44.0" text-anchor="end" fill="#4a5466">16×</text>
+<line x1="125" y1="40" x2="125" y2="370" stroke="#e3e7ee"/>
+<text x="125" y="390" text-anchor="middle" font-size="12" fill="#4a5466">1 MPI × 4</text>
+<line x1="275" y1="40" x2="275" y2="370" stroke="#e3e7ee"/>
+<text x="275" y="390" text-anchor="middle" font-size="12" fill="#4a5466">2 MPI × 4</text>
+<line x1="425" y1="40" x2="425" y2="370" stroke="#e3e7ee"/>
+<text x="425" y="390" text-anchor="middle" font-size="12" fill="#4a5466">2 MPI × 8</text>
+<line x1="575" y1="40" x2="575" y2="370" stroke="#e3e7ee"/>
+<text x="575" y="390" text-anchor="middle" font-size="12" fill="#4a5466">4 MPI × 4</text>
+<line x1="70" y1="370" x2="650" y2="370" stroke="#4a5466"/>
+<line x1="70" y1="40" x2="70" y2="370" stroke="#4a5466"/>
+<text x="360" y="418" text-anchor="middle" fill="#1a2230">Configuração (processos MPI × threads por processo)</text>
+<text x="20" y="205" text-anchor="middle" fill="#1a2230" transform="rotate(-90 20 205)">Speedup (baseline / MPI v1)</text>
+<polyline points="125,287.50 275,205.00 425,40.00 575,40.00" fill="none" stroke="#9aa3b2" stroke-width="2.5" stroke-dasharray="6 5"/>
+<polyline points="125,333.74 275,336.70 425,310.72 575,340.69" fill="none" stroke="#2f6fd6" stroke-width="2.5"/>
+<circle cx="125" cy="333.74" r="4.5" fill="#2f6fd6"/>
+<circle cx="275" cy="336.70" r="4.5" fill="#2f6fd6"/>
+<circle cx="425" cy="310.72" r="4.5" fill="#2f6fd6"/>
+<circle cx="575" cy="340.69" r="4.5" fill="#2f6fd6"/>
+<polyline points="125,328.21 275,336.00 425,333.53 575,336.81" fill="none" stroke="#c8721a" stroke-width="2.5"/>
+<circle cx="125" cy="328.21" r="4.5" fill="#c8721a"/>
+<circle cx="275" cy="336.00" r="4.5" fill="#c8721a"/>
+<circle cx="425" cy="333.53" r="4.5" fill="#c8721a"/>
+<circle cx="575" cy="336.81" r="4.5" fill="#c8721a"/>
+<text x="125" y="321.7" text-anchor="middle" fill="#2f6fd6" font-size="12">1.76×</text>
+<text x="125" y="347.2" text-anchor="middle" fill="#c8721a" font-size="12">2.03×</text>
+<text x="275" y="324.7" text-anchor="middle" fill="#2f6fd6" font-size="12">1.61×</text>
+<text x="275" y="355.0" text-anchor="middle" fill="#c8721a" font-size="12">1.65×</text>
+<text x="425" y="298.7" text-anchor="middle" fill="#2f6fd6" font-size="12">2.87×</text>
+<text x="425" y="352.5" text-anchor="middle" fill="#c8721a" font-size="12">1.77×</text>
+<text x="575" y="328.7" text-anchor="middle" fill="#2f6fd6" font-size="12">1.42×</text>
+<text x="575" y="355.8" text-anchor="middle" fill="#c8721a" font-size="12">1.61×</text>
+<line x1="86" y1="54" x2="114" y2="54" stroke="#9aa3b2" stroke-width="2.5" stroke-dasharray="6 5"/>
+<text x="122" y="58" fill="#1a2230">ideal (speedup = total de threads)</text>
+<line x1="86" y1="74" x2="114" y2="74" stroke="#2f6fd6" stroke-width="2.5"/>
+<text x="122" y="78" fill="#1a2230">n = 20.000.000</text>
+<line x1="86" y1="94" x2="114" y2="94" stroke="#c8721a" stroke-width="2.5"/>
+<text x="122" y="98" fill="#1a2230">n = 50.000.000</text>
+</svg>
