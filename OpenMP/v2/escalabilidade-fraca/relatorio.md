@@ -1,75 +1,27 @@
-# Teste de escalabilidade fraca — OpenMP v2
+# Análise de desempenho — escalabilidade fraca da OpenMP v2
 
-## Procedimento
+A análise considera 1.000.000 de elementos por thread. Conforme o número de threads aumenta, o tamanho total do vetor cresce na mesma proporção. O objetivo é observar quanto o tempo de execução varia com esse aumento conjunto de recursos e dados.
 
-Entrada de 1.000.000 de elementos por thread, com 1, 2, 4, 8 e 16 threads.
-Foi compilado o programa original `OpenMP/v2/openmpV2Perfilamento.cpp`, sem
-alterações, usando `g++ -O2 -fopenmp` (GCC 13.3.0). Cada configuração foi executada
-sequencialmente, com dois aquecimentos descartados, dez repetições medidas e
-corte de instrumentação 2160. O tempo apresentado é exclusivamente a média da
-Fase 1; a Fase 2 também é executada pelo programa, mas seus tempos não entram
-na análise. Geração da entrada e validação ficam fora do cronômetro; a região
-paralela está dentro dele.
+| Threads | Elementos | Tempo médio (s) | Eficiência fraca |
+|---:|---:|---:|---:|
+| 1 | 1.000.000 | 0,076268 | 100,00% |
+| 2 | 2.000.000 | 0,079606 | 95,81% |
+| 4 | 4.000.000 | 0,092123 | 82,79% |
+| 8 | 8.000.000 | 0,121138 | 62,96% |
+| 16 | 16.000.000 | 0,197049 | 38,71% |
 
-Configuração: `OMP_NUM_THREADS=p`, `OMP_DYNAMIC=false`, `OMP_PROC_BIND=close`,
-`OMP_PLACES=cores`, `OMP_THREAD_LIMIT=16`, `OMP_MAX_ACTIVE_LEVELS=1`.
-O vetor inicial determinístico é regenerado a cada repetição. O programa compara
-o último resultado de cada fase com uma referência sequencial; todas as
-comparações retornaram `SIM`. Não há validação individual de cada repetição.
+A eficiência fraca é calculada por `100 × tempo com 1 thread / tempo com p threads`, usando os tamanhos correspondentes da tabela. Quanto mais próximo de 100%, melhor a manutenção do tempo ao aumentar a entrada e a quantidade de threads.
 
-## Ambiente
+![Eficiência na escalabilidade fraca](eficiencia.svg)
 
-AMD Ryzen 7 5700G, 8 núcleos físicos e 16 threads lógicas, conforme topologia
-exposta pelo ambiente virtualizado Microsoft. CPUs 0–15 permitidas; cgroup sem
-quota de CPU (`cpu.max = max 100000`). A configuração com 16 threads usa SMT,
-portanto não equivale a 16 núcleos físicos. Não se controlaram frequência da CPU
-nem atividade externa ao processo. O ambiente completo e a configuração OpenMP
-impressa pelo runtime estão em `ambiente.txt` e nos logs de cada execução.
+Com duas threads, a v2 processa o dobro de elementos com aumento de apenas 4,38% no tempo. A eficiência de 95,81% indica que, nessa configuração, o paralelismo acompanha bem o crescimento da entrada.
 
-## Resultados
+Com quatro threads, o tempo aumenta 20,79% em relação à execução com uma thread, e a eficiência cai para 82,79%. Com oito threads, o aumento chega a 58,83%, com eficiência de 62,96%. O programa consegue processar mais dados por segundo, mas precisa de mais tempo para concluir a entrada proporcionalmente maior.
 
-| Threads | Elementos | Elementos/thread | Tempo médio Fase 1 (s) | Eficiência fraca |
-|---:|---:|---:|---:|---:|
-| 1 | 1.000.000 | 1.000.000 | 0,076268 | 100,00% |
-| 2 | 2.000.000 | 1.000.000 | 0,079606 | 95,81% |
-| 4 | 4.000.000 | 1.000.000 | 0,092123 | 82,79% |
-| 8 | 8.000.000 | 1.000.000 | 0,121138 | 62,96% |
-| 16 | 16.000.000 | 1.000.000 | 0,197049 | 38,71% |
+A maior perda ocorre na passagem de oito para dezesseis threads: o volume de dados dobra, enquanto o tempo aumenta aproximadamente 62,67%. Com dezesseis threads, a execução leva 2,58 vezes o tempo inicial para processar dezesseis vezes mais elementos. Isso representa uma vazão aproximadamente 6,19 vezes maior que a configuração com uma thread, apesar da eficiência fraca de apenas 38,71%.
 
-Eficiência fraca convencional: `100 × T(1, n0) / T(p, p × n0)`.
-A referência é a própria v2 com uma thread e um milhão de elementos, e não o
-tempo do baseline usado nos gráficos de escalabilidade forte. Os cálculos usam
-os tempos impressos pelo programa, arredondados a seis casas decimais.
+Parte do crescimento do tempo é compatível com a natureza do Merge Sort, cujo trabalho cresce como `n log n`. Manter a quantidade de elementos por thread constante não mantém o trabalho por thread exatamente constante. Pelo modelo `n log₂(n)`, passar de um milhão para dezesseis milhões de elementos aumenta o trabalho médio por thread em aproximadamente 20,1%. Esse crescimento, por si só, não explica todo o aumento de tempo observado.
 
-## Interpretação e limitações
+A v2 distribui tanto a ordenação quanto a intercalação entre tarefas, mas ainda precisa sincronizar essas tarefas e ler e escrever os vetores a cada nível da ordenação. Custos de gerenciamento, acesso à memória e compartilhamento de recursos entre threads podem contribuir para a redução dos ganhos. A configuração de dezesseis threads também utiliza threads lógicas sobre oito núcleos físicos no ambiente registrado. Os tempos disponíveis não permitem separar a contribuição de cada fator.
 
-Com duas threads, o volume dobra e o tempo cresce cerca de 4,38%. Com oito,
-o volume é oito vezes maior e o tempo cresce cerca de 58,83%. Com dezesseis,
-o tempo é aproximadamente 2,58 vezes o inicial para um volume dezesseis vezes
-maior. A capacidade de processar elementos por segundo aumenta, mas o tempo
-não se mantém constante.
-
-Merge Sort tem trabalho O(n log n). Manter n/p constante não mantém exatamente
-o trabalho por thread constante: pelo modelo n log2(n), o crescimento relativo
-é log2(p × n0)/log2(n0). Para n0=1.000.000 e p=16, esse fator é aproximadamente
-1,201, ou 20,1% mais trabalho por thread. Isso é uma referência teórica de trabalho,
-não uma previsão exata do walltime.
-
-Os resultados não isolam as causas do aumento: custos de tarefas e sincronização,
-memória/cache, SMT e variação do ambiente podem contribuir. O programa conserva
-apenas as médias, portanto não há desvio padrão ou intervalos de confiança.
-Esta rodada mede este ambiente e não substitui as medições históricas dos relatórios
-v1/v2, que podem ter sido feitas sob outras condições.
-
-## Reprodução e evidências
-
-Na raiz do projeto:
-
-```bash
-python3 OpenMP/v2/escalabilidade-fraca/executar.py
-```
-
-O script compila em diretório temporário e substitui os resultados desta pasta
-por uma nova rodada. `resultados.csv` contém os dados tabulares; `threads-*.log`
-contém a saída completa do programa original e a configuração do runtime;
-`ambiente.txt` registra compilador, topologia, limites e hash do fonte principal.
+Os resultados mostram boa escalabilidade fraca com duas threads e perda progressiva de eficiência nas configurações seguintes. A vazão continua aumentando até dezesseis threads, mas o ganho adicional diminui, especialmente depois de oito threads. Como os dados apresentam apenas médias, sem medidas de dispersão, essa análise descreve a tendência observada nesta rodada.
