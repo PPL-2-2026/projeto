@@ -47,3 +47,23 @@ services:
       sh -c 'mkdir -p bin &&
              g++ -O2 -g -fopenmp -o bin/perfilamento "baseline e perfilamento/perfilamento.cpp" &&
              ./bin/perfilamento ${N:-20000000}'
+
+
+  
+  mpi:
+    <<: *cpp
+    command: >
+      sh -c 'mkdir -p bin &&
+             mpicxx -O2 -fopenmp -o bin/mpi MPI/v1/mpi.cpp &&
+             mpirun --oversubscribe --bind-to none -np ${PROCS:-2} ./bin/mpi ${N:-20000000}'
+
+
+  
+  mpiperfilamento:
+    <<: *cpp
+    command: >
+      sh -c 'mkdir -p bin &&
+             mpicxx -O2 -g -fopenmp -o bin/mpiperfilamento MPI/v1/mpiV1perfilamento.cpp &&
+             mpirun --oversubscribe --bind-to none -np ${PROCS:-2} ./bin/mpiperfilamento ${N:-20000000} ${REPS:-5} ${AQUEC:-1} ${CORTE:-2160}'
+
+
