@@ -32,11 +32,11 @@ static void intercala_dividindo(const vector<int>& a, vector<int>& tmp,
     }
     int m1, m2;
     if (n1 >= n2) {   // divide a metade esquerda no meio
-        m1 = (l1 + r1) / 2;
-        m2 = lower_bound(a.begin() + l2, a.begin() + r2, a[m1]) - a.begin();
+        m1 = (l1 + r1) / 2; // encontra o valor do meio do primeiro trecho
+        m2 = lower_bound(a.begin() + l2, a.begin() + r2, a[m1]) - a.begin(); // busca no segundo trecho o primeiro valor maior ou igual ao valor que está no meio do primeiro trecho
     } else {          // divide a metade direita no meio
         m2 = (l2 + r2) / 2;
-        m1 = upper_bound(a.begin() + l1, a.begin() + r1, a[m2]) - a.begin();
+        m1 = upper_bound(a.begin() + l1, a.begin() + r1, a[m2]) - a.begin(); // Busca no primeiro trecho o primeiro valor estritamente maior que esse valor do meio
     }
     int km = k + (m1 - l1) + (m2 - l2); // onde a segunda parte começa em tmp
 
