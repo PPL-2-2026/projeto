@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" font-family="Arial, Helvetica, sans-serif" font-size="13" role="img" aria-labelledby="titulo descricao">
+<title id="titulo">Eficiência paralela — MPI + OpenMP v1</title>
+<desc id="descricao">Eficiência paralela — MPI + OpenMP v1. Dois painéis para 20 e 50 milhões de elementos; configurações categóricas de processos MPI × threads OpenMP por processo: 1 × 4, 2 × 4, 2 × 8 e 4 × 4. Tempos da Fase 1, média de cinco repetições após um aquecimento. Baseline histórico. Escala comum de 0 a 110%. Eficiência = baseline / (processos × threads por processo × tempo paralelo) × 100; não representa ocupação da CPU.</desc>
+<rect width="1000" height="520" fill="#ffffff"/>
+<!-- Fonte: MPI/v1/v1.md; cálculos a partir dos tempos, sem arredondamento intermediário do speedup. -->
+<text x="500" y="26" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2230">Eficiência paralela — MPI + OpenMP v1</text>
+<line x1="295.00" y1="53.00" x2="323.00" y2="53.00" stroke="#c8721a" stroke-width="2.5"/>
+<rect x="305" y="49" width="8" height="8" fill="#c8721a"/>
+<text x="331" y="57" fill="#1a2230">MPI + OpenMP v1</text>
+<line x1="540.00" y1="53.00" x2="568.00" y2="53.00" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="576" y="57" fill="#1a2230">Ideal (100%)</text>
+<text x="265" y="88" text-anchor="middle" font-weight="bold" fill="#1a2230">n = 20.000.000</text>
+<line x1="70.00" y1="395.00" x2="460.00" y2="395.00" stroke="#e3e7ee" />
+<text x="62" y="399.0" text-anchor="end" fill="#4a5466">0%</text>
+<line x1="70.00" y1="368.64" x2="460.00" y2="368.64" stroke="#e3e7ee" />
+<text x="62" y="372.64" text-anchor="end" fill="#4a5466">10%</text>
+<line x1="70.00" y1="342.27" x2="460.00" y2="342.27" stroke="#e3e7ee" />
+<text x="62" y="346.27" text-anchor="end" fill="#4a5466">20%</text>
+<line x1="70.00" y1="315.91" x2="460.00" y2="315.91" stroke="#e3e7ee" />
+<text x="62" y="319.91" text-anchor="end" fill="#4a5466">30%</text>
+<line x1="70.00" y1="289.55" x2="460.00" y2="289.55" stroke="#e3e7ee" />
+<text x="62" y="293.55" text-anchor="end" fill="#4a5466">40%</text>
+<line x1="70.00" y1="263.18" x2="460.00" y2="263.18" stroke="#e3e7ee" />
+<text x="62" y="267.18" text-anchor="end" fill="#4a5466">50%</text>
+<line x1="70.00" y1="236.82" x2="460.00" y2="236.82" stroke="#e3e7ee" />
+<text x="62" y="240.82" text-anchor="end" fill="#4a5466">60%</text>
+<line x1="70.00" y1="210.45" x2="460.00" y2="210.45" stroke="#e3e7ee" />
+<text x="62" y="214.45" text-anchor="end" fill="#4a5466">70%</text>
+<line x1="70.00" y1="184.09" x2="460.00" y2="184.09" stroke="#e3e7ee" />
+<text x="62" y="188.09" text-anchor="end" fill="#4a5466">80%</text>
+<line x1="70.00" y1="157.73" x2="460.00" y2="157.73" stroke="#e3e7ee" />
+<text x="62" y="161.73" text-anchor="end" fill="#4a5466">90%</text>
+<line x1="70.00" y1="131.36" x2="460.00" y2="131.36" stroke="#e3e7ee" />
+<text x="62" y="135.36" text-anchor="end" fill="#4a5466">100%</text>
+<line x1="70.00" y1="105.00" x2="460.00" y2="105.00" stroke="#e3e7ee" />
+<text x="62" y="109.0" text-anchor="end" fill="#4a5466">110%</text>
+<line x1="105.00" y1="105.00" x2="105.00" y2="395.00" stroke="#e3e7ee" />
+<text x="105.0" y="415" text-anchor="middle" fill="#4a5466">1 × 4</text>
+<line x1="211.67" y1="105.00" x2="211.67" y2="395.00" stroke="#e3e7ee" />
+<text x="211.67" y="415" text-anchor="middle" fill="#4a5466">2 × 4</text>
+<line x1="318.33" y1="105.00" x2="318.33" y2="395.00" stroke="#e3e7ee" />
+<text x="318.33" y="415" text-anchor="middle" fill="#4a5466">2 × 8</text>
+<line x1="425.00" y1="105.00" x2="425.00" y2="395.00" stroke="#e3e7ee" />
+<text x="425.0" y="415" text-anchor="middle" fill="#4a5466">4 × 4</text>
+<line x1="70.00" y1="395.00" x2="460.00" y2="395.00" stroke="#4a5466" />
+<line x1="70.00" y1="105.00" x2="70.00" y2="395.00" stroke="#4a5466" />
+<line x1="70.00" y1="131.36" x2="460.00" y2="131.36" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="265" y="442" text-anchor="middle" fill="#1a2230">Processos MPI × threads por processo</text>
+<text x="22" y="250" text-anchor="middle" fill="#1a2230" transform="rotate(-90 22 250)">Eficiência paralela (%)</text>
+<polyline points="105.00,279.11 211.67,341.79 318.33,347.64 425.00,371.58" fill="none" stroke="#c8721a" stroke-width="2.5"/>
+<rect x="101.00" y="275.11" width="8" height="8" fill="#c8721a"><title>1 processos × 4 threads/processo; 43,96%</title></rect>
+<text x="105.0" y="267.11" text-anchor="middle" font-size="12" fill="#c8721a">43,96%</text>
+<rect x="207.67" y="337.79" width="8" height="8" fill="#c8721a"><title>2 processos × 4 threads/processo; 20,18%</title></rect>
+<text x="211.67" y="329.79" text-anchor="middle" font-size="12" fill="#c8721a">20,18%</text>
+<rect x="314.33" y="343.64" width="8" height="8" fill="#c8721a"><title>2 processos × 8 threads/processo; 17,96%</title></rect>
+<text x="318.33" y="335.64" text-anchor="middle" font-size="12" fill="#c8721a">17,96%</text>
+<rect x="421.00" y="367.58" width="8" height="8" fill="#c8721a"><title>4 processos × 4 threads/processo; 8,88%</title></rect>
+<text x="425.0" y="359.58" text-anchor="middle" font-size="12" fill="#c8721a">8,88%</text>
+<text x="765" y="88" text-anchor="middle" font-weight="bold" fill="#1a2230">n = 50.000.000</text>
+<line x1="570.00" y1="395.00" x2="960.00" y2="395.00" stroke="#e3e7ee" />
+<text x="562" y="399.0" text-anchor="end" fill="#4a5466">0%</text>
+<line x1="570.00" y1="368.64" x2="960.00" y2="368.64" stroke="#e3e7ee" />
+<text x="562" y="372.64" text-anchor="end" fill="#4a5466">10%</text>
+<line x1="570.00" y1="342.27" x2="960.00" y2="342.27" stroke="#e3e7ee" />
+<text x="562" y="346.27" text-anchor="end" fill="#4a5466">20%</text>
+<line x1="570.00" y1="315.91" x2="960.00" y2="315.91" stroke="#e3e7ee" />
+<text x="562" y="319.91" text-anchor="end" fill="#4a5466">30%</text>
+<line x1="570.00" y1="289.55" x2="960.00" y2="289.55" stroke="#e3e7ee" />
+<text x="562" y="293.55" text-anchor="end" fill="#4a5466">40%</text>
+<line x1="570.00" y1="263.18" x2="960.00" y2="263.18" stroke="#e3e7ee" />
+<text x="562" y="267.18" text-anchor="end" fill="#4a5466">50%</text>
+<line x1="570.00" y1="236.82" x2="960.00" y2="236.82" stroke="#e3e7ee" />
+<text x="562" y="240.82" text-anchor="end" fill="#4a5466">60%</text>
+<line x1="570.00" y1="210.45" x2="960.00" y2="210.45" stroke="#e3e7ee" />
+<text x="562" y="214.45" text-anchor="end" fill="#4a5466">70%</text>
+<line x1="570.00" y1="184.09" x2="960.00" y2="184.09" stroke="#e3e7ee" />
+<text x="562" y="188.09" text-anchor="end" fill="#4a5466">80%</text>
+<line x1="570.00" y1="157.73" x2="960.00" y2="157.73" stroke="#e3e7ee" />
+<text x="562" y="161.73" text-anchor="end" fill="#4a5466">90%</text>
+<line x1="570.00" y1="131.36" x2="960.00" y2="131.36" stroke="#e3e7ee" />
+<text x="562" y="135.36" text-anchor="end" fill="#4a5466">100%</text>
+<line x1="570.00" y1="105.00" x2="960.00" y2="105.00" stroke="#e3e7ee" />
+<text x="562" y="109.0" text-anchor="end" fill="#4a5466">110%</text>
+<line x1="605.00" y1="105.00" x2="605.00" y2="395.00" stroke="#e3e7ee" />
+<text x="605.0" y="415" text-anchor="middle" fill="#4a5466">1 × 4</text>
+<line x1="711.67" y1="105.00" x2="711.67" y2="395.00" stroke="#e3e7ee" />
+<text x="711.67" y="415" text-anchor="middle" fill="#4a5466">2 × 4</text>
+<line x1="818.33" y1="105.00" x2="818.33" y2="395.00" stroke="#e3e7ee" />
+<text x="818.33" y="415" text-anchor="middle" fill="#4a5466">2 × 8</text>
+<line x1="925.00" y1="105.00" x2="925.00" y2="395.00" stroke="#e3e7ee" />
+<text x="925.0" y="415" text-anchor="middle" fill="#4a5466">4 × 4</text>
+<line x1="570.00" y1="395.00" x2="960.00" y2="395.00" stroke="#4a5466" />
+<line x1="570.00" y1="105.00" x2="570.00" y2="395.00" stroke="#4a5466" />
+<line x1="570.00" y1="131.36" x2="960.00" y2="131.36" stroke="#9aa3b2" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="765" y="442" text-anchor="middle" fill="#1a2230">Processos MPI × threads por processo</text>
+<text x="522" y="250" text-anchor="middle" fill="#1a2230" transform="rotate(-90 522 250)">Eficiência paralela (%)</text>
+<polyline points="605.00,261.45 711.67,340.67 818.33,365.86 925.00,368.49" fill="none" stroke="#c8721a" stroke-width="2.5"/>
+<rect x="601.00" y="257.45" width="8" height="8" fill="#c8721a"><title>1 processos × 4 threads/processo; 50,66%</title></rect>
+<text x="605.0" y="249.45" text-anchor="middle" font-size="12" fill="#c8721a">50,66%</text>
+<rect x="707.67" y="336.67" width="8" height="8" fill="#c8721a"><title>2 processos × 4 threads/processo; 20,61%</title></rect>
+<text x="711.67" y="328.67" text-anchor="middle" font-size="12" fill="#c8721a">20,61%</text>
+<rect x="814.33" y="361.86" width="8" height="8" fill="#c8721a"><title>2 processos × 8 threads/processo; 11,05%</title></rect>
+<text x="818.33" y="353.86" text-anchor="middle" font-size="12" fill="#c8721a">11,05%</text>
+<rect x="921.00" y="364.49" width="8" height="8" fill="#c8721a"><title>4 processos × 4 threads/processo; 10,06%</title></rect>
+<text x="925.0" y="356.49" text-anchor="middle" font-size="12" fill="#c8721a">10,06%</text>
+<text x="500" y="474" text-anchor="middle" font-size="12" fill="#4a5466">Fase 1 · Média de 5 execuções após 1 aquecimento · Baseline medido anteriormente</text>
+<text x="500" y="496" text-anchor="middle" font-size="12" fill="#4a5466">Eficiência = tempo do baseline / (processos × threads por processo × tempo paralelo) × 100</text>
+</svg>
