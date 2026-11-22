@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" font-family="Arial, Helvetica, sans-serif" font-size="13" role="img" aria-labelledby="titulo descricao">
+<title id="titulo">Speedup — MPI + OpenMP V1</title>
+<desc id="descricao">Speedup em relação ao baseline sequencial, média de cinco execuções por configuração.</desc>
+<rect width="1000" height="520" fill="#ffffff"/>
+<text x="500" y="27" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2230">Speedup — MPI + OpenMP V1</text>
+<line x1="280.0" y1="55" x2="305.0" y2="55" stroke="#c8721a" stroke-width="3"/>
+<rect x="289.0" y="51" width="8" height="8" fill="#c8721a"/>
+<text x="313.0" y="59" fill="#1a2230">MPI V1 original</text>
+<line x1="520.0" y1="55" x2="545.0" y2="55" stroke="#287a87" stroke-width="3"/>
+<rect x="529.0" y="51" width="8" height="8" fill="#287a87"/>
+<text x="553.0" y="59" fill="#1a2230">MPI V1 revisada</text>
+<text x="265.0" y="89" text-anchor="middle" font-weight="bold" fill="#1a2230">n = 1.000.000</text>
+<line x1="70" y1="390.00" x2="460" y2="390.00" stroke="#e3e7ee"/>
+<text x="62" y="394.00" text-anchor="end" fill="#4a5466" font-size="12">0×</text>
+<line x1="70" y1="333.00" x2="460" y2="333.00" stroke="#e3e7ee"/>
+<text x="62" y="337.00" text-anchor="end" fill="#4a5466" font-size="12">0×</text>
+<line x1="70" y1="276.00" x2="460" y2="276.00" stroke="#e3e7ee"/>
+<text x="62" y="280.00" text-anchor="end" fill="#4a5466" font-size="12">1×</text>
+<line x1="70" y1="219.00" x2="460" y2="219.00" stroke="#e3e7ee"/>
+<text x="62" y="223.00" text-anchor="end" fill="#4a5466" font-size="12">2×</text>
+<line x1="70" y1="162.00" x2="460" y2="162.00" stroke="#e3e7ee"/>
+<text x="62" y="166.00" text-anchor="end" fill="#4a5466" font-size="12">2×</text>
+<line x1="70" y1="105.00" x2="460" y2="105.00" stroke="#e3e7ee"/>
+<text x="62" y="109.00" text-anchor="end" fill="#4a5466" font-size="12">2×</text>
+<line x1="70" y1="276.00" x2="460" y2="276.00" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="6 5"/>
+<line x1="200.00" y1="105" x2="200.00" y2="390" stroke="#e3e7ee"/>
+<line x1="200.00" y1="210.29" x2="200.00" y2="390" stroke="#c8721a" stroke-width="2.5"/>
+<rect x="196.00" y="206.29" width="8" height="8" fill="#c8721a"><title>MPI V1 original: 1,58×</title></rect>
+<text x="200.00" y="198.29" text-anchor="middle" font-size="12" fill="#c8721a">1,58×</text>
+<text x="200.00" y="414" text-anchor="middle" fill="#4a5466" font-size="12">Original</text>
+<line x1="330.00" y1="105" x2="330.00" y2="390" stroke="#e3e7ee"/>
+<line x1="330.00" y1="183.58" x2="330.00" y2="390" stroke="#287a87" stroke-width="2.5"/>
+<rect x="326.00" y="179.58" width="8" height="8" fill="#287a87"><title>MPI V1 revisada: 1,81×</title></rect>
+<text x="330.00" y="171.58" text-anchor="middle" font-size="12" fill="#287a87">1,81×</text>
+<text x="330.00" y="414" text-anchor="middle" fill="#4a5466" font-size="12">Revisada</text>
+<text x="765.0" y="89" text-anchor="middle" font-weight="bold" fill="#1a2230">n = 20.000.000</text>
+<line x1="570" y1="390.00" x2="960" y2="390.00" stroke="#e3e7ee"/>
+<text x="562" y="394.00" text-anchor="end" fill="#4a5466" font-size="12">0×</text>
+<line x1="570" y1="333.00" x2="960" y2="333.00" stroke="#e3e7ee"/>
+<text x="562" y="337.00" text-anchor="end" fill="#4a5466" font-size="12">1×</text>
+<line x1="570" y1="276.00" x2="960" y2="276.00" stroke="#e3e7ee"/>
+<text x="562" y="280.00" text-anchor="end" fill="#4a5466" font-size="12">1×</text>
+<line x1="570" y1="219.00" x2="960" y2="219.00" stroke="#e3e7ee"/>
+<text x="562" y="223.00" text-anchor="end" fill="#4a5466" font-size="12">2×</text>
+<line x1="570" y1="162.00" x2="960" y2="162.00" stroke="#e3e7ee"/>
+<text x="562" y="166.00" text-anchor="end" fill="#4a5466" font-size="12">2×</text>
+<line x1="570" y1="105.00" x2="960" y2="105.00" stroke="#e3e7ee"/>
+<text x="562" y="109.00" text-anchor="end" fill="#4a5466" font-size="12">3×</text>
+<line x1="570" y1="295.00" x2="960" y2="295.00" stroke="#9aa3b2" stroke-width="1.5" stroke-dasharray="6 5"/>
+<line x1="700.00" y1="105" x2="700.00" y2="390" stroke="#e3e7ee"/>
+<line x1="700.00" y1="176.47" x2="700.00" y2="390" stroke="#c8721a" stroke-width="2.5"/>
+<rect x="696.00" y="172.47" width="8" height="8" fill="#c8721a"><title>MPI V1 original: 2,25×</title></rect>
+<text x="700.00" y="164.47" text-anchor="middle" font-size="12" fill="#c8721a">2,25×</text>
+<text x="700.00" y="414" text-anchor="middle" fill="#4a5466" font-size="12">Original</text>
+<line x1="830.00" y1="105" x2="830.00" y2="390" stroke="#e3e7ee"/>
+<line x1="830.00" y1="179.36" x2="830.00" y2="390" stroke="#287a87" stroke-width="2.5"/>
+<rect x="826.00" y="175.36" width="8" height="8" fill="#287a87"><title>MPI V1 revisada: 2,22×</title></rect>
+<text x="830.00" y="167.36" text-anchor="middle" font-size="12" fill="#287a87">2,22×</text>
+<text x="830.00" y="414" text-anchor="middle" fill="#4a5466" font-size="12">Revisada</text>
+<text x="500" y="475" text-anchor="middle" font-size="12" fill="#4a5466">2 processos MPI × 4 threads OpenMP por processo · 8 threads totais</text>
+<text x="500" y="496" text-anchor="middle" font-size="12" fill="#4a5466">Speedup = tempo médio baseline / tempo médio MPI · Maior é melhor</text>
+</svg>
