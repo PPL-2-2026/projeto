@@ -67,3 +67,16 @@ services:
              mpirun --oversubscribe --bind-to none -np ${PROCS:-2} ./bin/mpiperfilamento ${N:-20000000} ${REPS:-5} ${AQUEC:-1} ${CORTE:-2160}'
 
 
+  mpirevisado:
+    <<: *cpp
+    command: >
+      sh -c 'mkdir -p bin &&
+             mpicxx -O2 -fopenmp -o bin/mpirevisado MPI/v1revisado/mpi.cpp &&
+             mpirun --oversubscribe --bind-to none -np ${PROCS:-2} ./bin/mpirevisado ${N:-20000000}'
+
+  mpiperfilamentorevisado:
+    <<: *cpp
+    command: >
+      sh -c 'mkdir -p bin &&
+             mpicxx -O2 -g -fopenmp -o bin/mpiperfilamentorevisado MPI/v1revisado/mpiV1perfilamento.cpp &&
+             mpirun --oversubscribe --bind-to none -np ${PROCS:-2} ./bin/mpiperfilamentorevisado ${N:-20000000} ${REPS:-5} ${AQUEC:-1} ${CORTE:-2160}'
