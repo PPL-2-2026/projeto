@@ -80,3 +80,10 @@ services:
       sh -c 'mkdir -p bin &&
              mpicxx -O2 -g -fopenmp -o bin/mpiperfilamentorevisado MPI/v1revisado/mpiV1perfilamento.cpp &&
              mpirun --oversubscribe --bind-to none -np ${PROCS:-2} ./bin/mpiperfilamentorevisado ${N:-20000000} ${REPS:-5} ${AQUEC:-1} ${CORTE:-2160}'
+
+  mpiv2:
+    <<: *cpp
+    command: >
+      sh -c 'mkdir -p bin &&
+             mpicxx -O2 -fopenmp -o bin/mpiv2 MPI/v2/mpi.cpp &&
+             mpirun --oversubscribe --bind-to none -np ${PROCS:-2} ./bin/mpiv2 ${N:-20000000}'
