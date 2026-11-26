@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" font-family="Arial, Helvetica, sans-serif" font-size="13" role="img" aria-labelledby="titulo"><title id="titulo">Tempos de execução — Baseline × MPI V1 × MPI V2</title><rect width="1000" height="520" fill="white"/>
+<text x="500" y="27" text-anchor="middle" font-size="16" fill="#1a2230" font-weight="bold">Tempos de execução — Baseline × MPI V1 × MPI V2</text>
+<line x1="95" y1="55" x2="120" y2="55" stroke="#9aa3b2" stroke-width="3"/>
+<rect x="103" y="51" width="8" height="8" fill="#9aa3b2"/>
+<text x="128" y="59" text-anchor="start" font-size="13" fill="#1a2230">Baseline</text>
+<line x1="305" y1="55" x2="330" y2="55" stroke="#c8721a" stroke-width="3"/>
+<rect x="313" y="51" width="8" height="8" fill="#c8721a"/>
+<text x="338" y="59" text-anchor="start" font-size="13" fill="#1a2230">V1 original</text>
+<line x1="515" y1="55" x2="540" y2="55" stroke="#287a87" stroke-width="3"/>
+<rect x="523" y="51" width="8" height="8" fill="#287a87"/>
+<text x="548" y="59" text-anchor="start" font-size="13" fill="#1a2230">V1 revisada</text>
+<line x1="725" y1="55" x2="750" y2="55" stroke="#355c9a" stroke-width="3"/>
+<rect x="733" y="51" width="8" height="8" fill="#355c9a"/>
+<text x="758" y="59" text-anchor="start" font-size="13" fill="#1a2230">V2</text>
+<text x="265.0" y="89" text-anchor="middle" font-size="13" fill="#1a2230" font-weight="bold">n = 1.000.000</text>
+<line x1="70" y1="390.0" x2="460" y2="390.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="394.0" text-anchor="end" font-size="12" fill="#4a5466">0,000 s</text>
+<line x1="70" y1="333.0" x2="460" y2="333.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="337.0" text-anchor="end" font-size="12" fill="#4a5466">0,060 s</text>
+<line x1="70" y1="276.0" x2="460" y2="276.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="280.0" text-anchor="end" font-size="12" fill="#4a5466">0,120 s</text>
+<line x1="70" y1="219.0" x2="460" y2="219.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="223.0" text-anchor="end" font-size="12" fill="#4a5466">0,180 s</text>
+<line x1="70" y1="162.0" x2="460" y2="162.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="166.0" text-anchor="end" font-size="12" fill="#4a5466">0,240 s</text>
+<line x1="70" y1="105.0" x2="460" y2="105.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="109.0" text-anchor="end" font-size="12" fill="#4a5466">0,300 s</text>
+<line x1="118.75" y1="105" x2="118.75" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="118.75" y="414" text-anchor="middle" font-size="12" fill="#4a5466">Baseline</text>
+<line x1="216.25" y1="105" x2="216.25" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="216.25" y="414" text-anchor="middle" font-size="12" fill="#4a5466">V1 original</text>
+<line x1="313.75" y1="105" x2="313.75" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="313.75" y="414" text-anchor="middle" font-size="12" fill="#4a5466">V1 revisada</text>
+<line x1="411.25" y1="105" x2="411.25" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="411.25" y="414" text-anchor="middle" font-size="12" fill="#4a5466">V2</text>
+<line x1="118.75" y1="209.12057000000004" x2="118.75" y2="390" stroke="#9aa3b2" stroke-width="2.5"/>
+<line x1="118.75" y1="216.00238251103227" x2="118.75" y2="202.2387574889678" stroke="#9aa3b2" stroke-width="1"/>
+<line x1="113.75" y1="216.00238251103227" x2="123.75" y2="216.00238251103227" stroke="#9aa3b2" stroke-width="1"/>
+<line x1="113.75" y1="202.2387574889678" x2="123.75" y2="202.2387574889678" stroke="#9aa3b2" stroke-width="1"/>
+<rect x="114.75" y="205.12057000000004" width="8" height="8" fill="#9aa3b2"/>
+<text x="118.75" y="192.2387574889678" text-anchor="middle" font-size="12" fill="#9aa3b2">0,190 s</text>
+<line x1="216.25" y1="282.63537" x2="216.25" y2="390" stroke="#c8721a" stroke-width="2.5"/>
+<line x1="216.25" y1="300.6154983457113" x2="216.25" y2="264.6552416542888" stroke="#c8721a" stroke-width="1"/>
+<line x1="211.25" y1="300.6154983457113" x2="221.25" y2="300.6154983457113" stroke="#c8721a" stroke-width="1"/>
+<line x1="211.25" y1="264.6552416542888" x2="221.25" y2="264.6552416542888" stroke="#c8721a" stroke-width="1"/>
+<rect x="212.25" y="278.63537" width="8" height="8" fill="#c8721a"/>
+<text x="216.25" y="254.65524165428877" text-anchor="middle" font-size="12" fill="#c8721a">0,113 s</text>
+<line x1="313.75" y1="284.56482" x2="313.75" y2="390" stroke="#287a87" stroke-width="2.5"/>
+<line x1="313.75" y1="289.46430722273567" x2="313.75" y2="279.6653327772643" stroke="#287a87" stroke-width="1"/>
+<line x1="308.75" y1="289.46430722273567" x2="318.75" y2="289.46430722273567" stroke="#287a87" stroke-width="1"/>
+<line x1="308.75" y1="279.6653327772643" x2="318.75" y2="279.6653327772643" stroke="#287a87" stroke-width="1"/>
+<rect x="309.75" y="280.56482" width="8" height="8" fill="#287a87"/>
+<text x="313.75" y="269.6653327772643" text-anchor="middle" font-size="12" fill="#287a87">0,111 s</text>
+<line x1="411.25" y1="307.37128" x2="411.25" y2="390" stroke="#355c9a" stroke-width="2.5"/>
+<line x1="411.25" y1="322.599356547762" x2="411.25" y2="292.14320345223797" stroke="#355c9a" stroke-width="1"/>
+<line x1="406.25" y1="322.599356547762" x2="416.25" y2="322.599356547762" stroke="#355c9a" stroke-width="1"/>
+<line x1="406.25" y1="292.14320345223797" x2="416.25" y2="292.14320345223797" stroke="#355c9a" stroke-width="1"/>
+<rect x="407.25" y="303.37128" width="8" height="8" fill="#355c9a"/>
+<text x="411.25" y="282.14320345223797" text-anchor="middle" font-size="12" fill="#355c9a">0,087 s</text>
+<text x="765.0" y="89" text-anchor="middle" font-size="13" fill="#1a2230" font-weight="bold">n = 20.000.000</text>
+<line x1="570" y1="390.0" x2="960" y2="390.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="394.0" text-anchor="end" font-size="12" fill="#4a5466">0,000 s</text>
+<line x1="570" y1="333.0" x2="960" y2="333.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="337.0" text-anchor="end" font-size="12" fill="#4a5466">1,200 s</text>
+<line x1="570" y1="276.0" x2="960" y2="276.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="280.0" text-anchor="end" font-size="12" fill="#4a5466">2,400 s</text>
+<line x1="570" y1="219.0" x2="960" y2="219.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="223.0" text-anchor="end" font-size="12" fill="#4a5466">3,600 s</text>
+<line x1="570" y1="162.00000000000003" x2="960" y2="162.00000000000003" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="166.00000000000003" text-anchor="end" font-size="12" fill="#4a5466">4,800 s</text>
+<line x1="570" y1="105.0" x2="960" y2="105.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="109.0" text-anchor="end" font-size="12" fill="#4a5466">6,000 s</text>
+<line x1="618.75" y1="105" x2="618.75" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="618.75" y="414" text-anchor="middle" font-size="12" fill="#4a5466">Baseline</text>
+<line x1="716.25" y1="105" x2="716.25" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="716.25" y="414" text-anchor="middle" font-size="12" fill="#4a5466">V1 original</text>
+<line x1="813.75" y1="105" x2="813.75" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="813.75" y="414" text-anchor="middle" font-size="12" fill="#4a5466">V1 revisada</text>
+<line x1="911.25" y1="105" x2="911.25" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="911.25" y="414" text-anchor="middle" font-size="12" fill="#4a5466">V2</text>
+<line x1="618.75" y1="187.94864199999998" x2="618.75" y2="390" stroke="#9aa3b2" stroke-width="2.5"/>
+<line x1="618.75" y1="200.383368681008" x2="618.75" y2="175.51391531899193" stroke="#9aa3b2" stroke-width="1"/>
+<line x1="613.75" y1="200.383368681008" x2="623.75" y2="200.383368681008" stroke="#9aa3b2" stroke-width="1"/>
+<line x1="613.75" y1="175.51391531899193" x2="623.75" y2="175.51391531899193" stroke="#9aa3b2" stroke-width="1"/>
+<rect x="614.75" y="183.94864199999998" width="8" height="8" fill="#9aa3b2"/>
+<text x="618.75" y="165.51391531899193" text-anchor="middle" font-size="12" fill="#9aa3b2">4,254 s</text>
+<line x1="716.25" y1="302.070964" x2="716.25" y2="390" stroke="#c8721a" stroke-width="2.5"/>
+<line x1="716.25" y1="305.08397960408263" x2="716.25" y2="299.0579483959173" stroke="#c8721a" stroke-width="1"/>
+<line x1="711.25" y1="305.08397960408263" x2="721.25" y2="305.08397960408263" stroke="#c8721a" stroke-width="1"/>
+<line x1="711.25" y1="299.0579483959173" x2="721.25" y2="299.0579483959173" stroke="#c8721a" stroke-width="1"/>
+<rect x="712.25" y="298.070964" width="8" height="8" fill="#c8721a"/>
+<text x="716.25" y="289.0579483959173" text-anchor="middle" font-size="12" fill="#c8721a">1,851 s</text>
+<line x1="813.75" y1="302.03515849999997" x2="813.75" y2="390" stroke="#287a87" stroke-width="2.5"/>
+<line x1="813.75" y1="302.4623366515824" x2="813.75" y2="301.6079803484176" stroke="#287a87" stroke-width="1"/>
+<line x1="808.75" y1="302.4623366515824" x2="818.75" y2="302.4623366515824" stroke="#287a87" stroke-width="1"/>
+<line x1="808.75" y1="301.6079803484176" x2="818.75" y2="301.6079803484176" stroke="#287a87" stroke-width="1"/>
+<rect x="809.75" y="298.03515849999997" width="8" height="8" fill="#287a87"/>
+<text x="813.75" y="291.6079803484176" text-anchor="middle" font-size="12" fill="#287a87">1,852 s</text>
+<line x1="911.25" y1="315.350254" x2="911.25" y2="390" stroke="#355c9a" stroke-width="2.5"/>
+<line x1="911.25" y1="317.9550939657264" x2="911.25" y2="312.7454140342736" stroke="#355c9a" stroke-width="1"/>
+<line x1="906.25" y1="317.9550939657264" x2="916.25" y2="317.9550939657264" stroke="#355c9a" stroke-width="1"/>
+<line x1="906.25" y1="312.7454140342736" x2="916.25" y2="312.7454140342736" stroke="#355c9a" stroke-width="1"/>
+<rect x="907.25" y="311.350254" width="8" height="8" fill="#355c9a"/>
+<text x="911.25" y="302.7454140342736" text-anchor="middle" font-size="12" fill="#355c9a">1,572 s</text>
+<text x="500" y="475" text-anchor="middle" font-size="12" fill="#4a5466">Cinco repetições por configuração · MPI: 2 processos × 4 threads</text>
+<text x="500" y="496" text-anchor="middle" font-size="12" fill="#4a5466">Barras de erro: desvio padrão amostral</text>
+</svg>

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" font-family="Arial, Helvetica, sans-serif" font-size="13" role="img" aria-labelledby="titulo"><title id="titulo">Lei de Amdahl — modelo × resultados observados</title><rect width="1000" height="520" fill="white"/>
+<text x="500" y="27" text-anchor="middle" font-size="16" fill="#1a2230" font-weight="bold">Lei de Amdahl — modelo × resultados observados</text>
+<line x1="305" y1="55" x2="330" y2="55" stroke="#287a87" stroke-width="3"/>
+<rect x="313" y="51" width="8" height="8" fill="#287a87"/>
+<text x="338" y="59" text-anchor="start" font-size="13" fill="#1a2230">Observado</text>
+<line x1="515" y1="55" x2="540" y2="55" stroke="#c8721a" stroke-width="3"/>
+<rect x="523" y="51" width="8" height="8" fill="#c8721a"/>
+<text x="548" y="59" text-anchor="start" font-size="13" fill="#1a2230">Modelo estimado</text>
+<text x="265.0" y="89" text-anchor="middle" font-size="13" fill="#1a2230" font-weight="bold">n = 1.000.000</text>
+<line x1="70" y1="390.0" x2="460" y2="390.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="394.0" text-anchor="end" font-size="12" fill="#4a5466">0,00×</text>
+<line x1="70" y1="333.0" x2="460" y2="333.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="337.0" text-anchor="end" font-size="12" fill="#4a5466">0,80×</text>
+<line x1="70" y1="276.0" x2="460" y2="276.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="280.0" text-anchor="end" font-size="12" fill="#4a5466">1,60×</text>
+<line x1="70" y1="219.0" x2="460" y2="219.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="223.0" text-anchor="end" font-size="12" fill="#4a5466">2,40×</text>
+<line x1="70" y1="162.0" x2="460" y2="162.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="166.0" text-anchor="end" font-size="12" fill="#4a5466">3,20×</text>
+<line x1="70" y1="105.0" x2="460" y2="105.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="109.0" text-anchor="end" font-size="12" fill="#4a5466">4,00×</text>
+<line x1="118.75" y1="105" x2="118.75" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="118.75" y="414" text-anchor="middle" font-size="12" fill="#4a5466">1</text>
+<line x1="216.25" y1="105" x2="216.25" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="216.25" y="414" text-anchor="middle" font-size="12" fill="#4a5466">2</text>
+<line x1="313.75" y1="105" x2="313.75" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="313.75" y="414" text-anchor="middle" font-size="12" fill="#4a5466">4</text>
+<line x1="411.25" y1="105" x2="411.25" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="411.25" y="414" text-anchor="middle" font-size="12" fill="#4a5466">8</text>
+<rect x="98.75" y="314.75" width="8" height="8" fill="#287a87"/>
+<text x="102.75" y="308.75" text-anchor="middle" font-size="12" fill="#287a87">1,00×</text>
+<line x1="102.75" y1="318.75" x2="200.25" y2="276.00493063991354" stroke="#287a87" stroke-width="2"/>
+<rect x="196.25" y="272.00493063991354" width="8" height="8" fill="#287a87"/>
+<text x="200.25" y="266.00493063991354" text-anchor="middle" font-size="12" fill="#287a87">1,60×</text>
+<line x1="200.25" y1="276.00493063991354" x2="297.75" y2="216.1119411243913" stroke="#287a87" stroke-width="2"/>
+<rect x="293.75" y="212.1119411243913" width="8" height="8" fill="#287a87"/>
+<text x="297.75" y="206.1119411243913" text-anchor="middle" font-size="12" fill="#287a87">2,44×</text>
+<line x1="297.75" y1="216.1119411243913" x2="395.25" y2="201.8641776885385" stroke="#287a87" stroke-width="2"/>
+<rect x="391.25" y="197.8641776885385" width="8" height="8" fill="#287a87"/>
+<text x="395.25" y="191.8641776885385" text-anchor="middle" font-size="12" fill="#287a87">2,64×</text>
+<rect x="130.75" y="314.75" width="8" height="8" fill="#c8721a"/>
+<line x1="134.75" y1="318.75" x2="232.25" y2="279.531532238002" stroke="#c8721a" stroke-width="2"/>
+<rect x="228.25" y="275.531532238002" width="8" height="8" fill="#c8721a"/>
+<line x1="232.25" y1="279.531532238002" x2="329.75" y2="237.58401318244" stroke="#c8721a" stroke-width="2"/>
+<rect x="325.75" y="233.58401318244" width="8" height="8" fill="#c8721a"/>
+<line x1="329.75" y1="237.58401318244" x2="427.25" y2="201.8641776885385" stroke="#c8721a" stroke-width="2"/>
+<rect x="423.25" y="197.8641776885385" width="8" height="8" fill="#c8721a"/>
+<text x="765.0" y="89" text-anchor="middle" font-size="13" fill="#1a2230" font-weight="bold">n = 20.000.000</text>
+<line x1="570" y1="390.0" x2="960" y2="390.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="394.0" text-anchor="end" font-size="12" fill="#4a5466">0,00×</text>
+<line x1="570" y1="333.0" x2="960" y2="333.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="337.0" text-anchor="end" font-size="12" fill="#4a5466">1,20×</text>
+<line x1="570" y1="276.0" x2="960" y2="276.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="280.0" text-anchor="end" font-size="12" fill="#4a5466">2,40×</text>
+<line x1="570" y1="219.0" x2="960" y2="219.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="223.0" text-anchor="end" font-size="12" fill="#4a5466">3,60×</text>
+<line x1="570" y1="162.00000000000003" x2="960" y2="162.00000000000003" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="166.00000000000003" text-anchor="end" font-size="12" fill="#4a5466">4,80×</text>
+<line x1="570" y1="105.0" x2="960" y2="105.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="109.0" text-anchor="end" font-size="12" fill="#4a5466">6,00×</text>
+<line x1="618.75" y1="105" x2="618.75" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="618.75" y="414" text-anchor="middle" font-size="12" fill="#4a5466">1</text>
+<line x1="716.25" y1="105" x2="716.25" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="716.25" y="414" text-anchor="middle" font-size="12" fill="#4a5466">2</text>
+<line x1="813.75" y1="105" x2="813.75" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="813.75" y="414" text-anchor="middle" font-size="12" fill="#4a5466">4</text>
+<line x1="911.25" y1="105" x2="911.25" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="911.25" y="414" text-anchor="middle" font-size="12" fill="#4a5466">8</text>
+<rect x="598.75" y="338.5" width="8" height="8" fill="#287a87"/>
+<text x="602.75" y="332.5" text-anchor="middle" font-size="12" fill="#287a87">1,00×</text>
+<line x1="602.75" y1="342.5" x2="700.25" y2="310.3061792254632" stroke="#287a87" stroke-width="2"/>
+<rect x="696.25" y="306.3061792254632" width="8" height="8" fill="#287a87"/>
+<text x="700.25" y="300.3061792254632" text-anchor="middle" font-size="12" fill="#287a87">1,68×</text>
+<line x1="700.25" y1="310.3061792254632" x2="797.75" y2="256.0850934938146" stroke="#287a87" stroke-width="2"/>
+<rect x="793.75" y="252.0850934938146" width="8" height="8" fill="#287a87"/>
+<text x="797.75" y="246.0850934938146" text-anchor="middle" font-size="12" fill="#287a87">2,82×</text>
+<line x1="797.75" y1="256.0850934938146" x2="895.25" y2="180.93496638439802" stroke="#287a87" stroke-width="2"/>
+<rect x="891.25" y="176.93496638439802" width="8" height="8" fill="#287a87"/>
+<text x="895.25" y="170.93496638439802" text-anchor="middle" font-size="12" fill="#287a87">4,40×</text>
+<rect x="630.75" y="338.5" width="8" height="8" fill="#c8721a"/>
+<line x1="634.75" y1="342.5" x2="732.25" y2="304.93570677901187" stroke="#c8721a" stroke-width="2"/>
+<rect x="728.25" y="300.93570677901187" width="8" height="8" fill="#c8721a"/>
+<line x1="732.25" y1="304.93570677901187" x2="829.75" y2="249.30167296301357" stroke="#c8721a" stroke-width="2"/>
+<rect x="825.75" y="245.30167296301357" width="8" height="8" fill="#c8721a"/>
+<line x1="829.75" y1="249.30167296301357" x2="927.25" y2="180.93496638439802" stroke="#c8721a" stroke-width="2"/>
+<rect x="923.25" y="176.93496638439802" width="8" height="8" fill="#c8721a"/>
+<text x="500" y="475" text-anchor="middle" font-size="12" fill="#4a5466">Um processo MPI · eixo horizontal: threads OpenMP</text>
+<text x="500" y="496" text-anchor="middle" font-size="12" fill="#4a5466">Fração serial efetiva estimada pelo resultado com oito threads</text>
+</svg>

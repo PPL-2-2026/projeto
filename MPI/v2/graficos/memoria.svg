@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" font-family="Arial, Helvetica, sans-serif" font-size="13" role="img" aria-labelledby="titulo"><title id="titulo">Alocação dos vetores principais — MPI V1 revisada × MPI V2</title><rect width="1000" height="520" fill="white"/>
+<text x="500" y="27" text-anchor="middle" font-size="16" fill="#1a2230" font-weight="bold">Alocação dos vetores principais — MPI V1 revisada × MPI V2</text>
+<line x1="305" y1="55" x2="330" y2="55" stroke="#287a87" stroke-width="3"/>
+<rect x="313" y="51" width="8" height="8" fill="#287a87"/>
+<text x="338" y="59" text-anchor="start" font-size="13" fill="#1a2230">V1 revisada</text>
+<line x1="515" y1="55" x2="540" y2="55" stroke="#355c9a" stroke-width="3"/>
+<rect x="523" y="51" width="8" height="8" fill="#355c9a"/>
+<text x="548" y="59" text-anchor="start" font-size="13" fill="#1a2230">V2</text>
+<text x="265.0" y="89" text-anchor="middle" font-size="13" fill="#1a2230" font-weight="bold">n = 1.000.000</text>
+<line x1="70" y1="390.0" x2="460" y2="390.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="394.0" text-anchor="end" font-size="12" fill="#4a5466">0,0 MiB</text>
+<line x1="70" y1="333.0" x2="460" y2="333.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="337.0" text-anchor="end" font-size="12" fill="#4a5466">4,0 MiB</text>
+<line x1="70" y1="276.0" x2="460" y2="276.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="280.0" text-anchor="end" font-size="12" fill="#4a5466">8,0 MiB</text>
+<line x1="70" y1="219.0" x2="460" y2="219.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="223.0" text-anchor="end" font-size="12" fill="#4a5466">12,0 MiB</text>
+<line x1="70" y1="162.0" x2="460" y2="162.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="166.0" text-anchor="end" font-size="12" fill="#4a5466">16,0 MiB</text>
+<line x1="70" y1="105.0" x2="460" y2="105.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="62" y="109.0" text-anchor="end" font-size="12" fill="#4a5466">20,0 MiB</text>
+<line x1="167.5" y1="105" x2="167.5" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="167.5" y="414" text-anchor="middle" font-size="12" fill="#4a5466">V1 revisada</text>
+<line x1="362.5" y1="105" x2="362.5" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="362.5" y="414" text-anchor="middle" font-size="12" fill="#4a5466">V2</text>
+<line x1="167.5" y1="172.562255859375" x2="167.5" y2="390" stroke="#287a87" stroke-width="2.5"/>
+<rect x="163.5" y="168.562255859375" width="8" height="8" fill="#287a87"/>
+<text x="167.5" y="162.562255859375" text-anchor="middle" font-size="12" fill="#287a87">15,3 MiB</text>
+<line x1="362.5" y1="226.92169189453125" x2="362.5" y2="390" stroke="#355c9a" stroke-width="2.5"/>
+<rect x="358.5" y="222.92169189453125" width="8" height="8" fill="#355c9a"/>
+<text x="362.5" y="216.92169189453125" text-anchor="middle" font-size="12" fill="#355c9a">11,4 MiB</text>
+<text x="765.0" y="89" text-anchor="middle" font-size="13" fill="#1a2230" font-weight="bold">n = 20.000.000</text>
+<line x1="570" y1="390.0" x2="960" y2="390.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="394.0" text-anchor="end" font-size="12" fill="#4a5466">0,0 MiB</text>
+<line x1="570" y1="333.0" x2="960" y2="333.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="337.0" text-anchor="end" font-size="12" fill="#4a5466">80,0 MiB</text>
+<line x1="570" y1="276.0" x2="960" y2="276.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="280.0" text-anchor="end" font-size="12" fill="#4a5466">160,0 MiB</text>
+<line x1="570" y1="219.0" x2="960" y2="219.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="223.0" text-anchor="end" font-size="12" fill="#4a5466">240,0 MiB</text>
+<line x1="570" y1="162.0" x2="960" y2="162.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="166.0" text-anchor="end" font-size="12" fill="#4a5466">320,0 MiB</text>
+<line x1="570" y1="105.0" x2="960" y2="105.0" stroke="#e3e7ee" stroke-width="1"/>
+<text x="562" y="109.0" text-anchor="end" font-size="12" fill="#4a5466">400,0 MiB</text>
+<line x1="667.5" y1="105" x2="667.5" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="667.5" y="414" text-anchor="middle" font-size="12" fill="#4a5466">V1 revisada</text>
+<line x1="862.5" y1="105" x2="862.5" y2="390" stroke="#e3e7ee" stroke-width="1"/>
+<text x="862.5" y="414" text-anchor="middle" font-size="12" fill="#4a5466">V2</text>
+<line x1="667.5" y1="172.562255859375" x2="667.5" y2="390" stroke="#287a87" stroke-width="2.5"/>
+<rect x="663.5" y="168.562255859375" width="8" height="8" fill="#287a87"/>
+<text x="667.5" y="162.562255859375" text-anchor="middle" font-size="12" fill="#287a87">305,2 MiB</text>
+<line x1="862.5" y1="226.92169189453125" x2="862.5" y2="390" stroke="#355c9a" stroke-width="2.5"/>
+<rect x="858.5" y="222.92169189453125" width="8" height="8" fill="#355c9a"/>
+<text x="862.5" y="216.92169189453125" text-anchor="middle" font-size="12" fill="#355c9a">228,9 MiB</text>
+<text x="500" y="475" text-anchor="middle" font-size="12" fill="#4a5466">Dois processos MPI · economia de 25%</text>
+<text x="500" y="496" text-anchor="middle" font-size="12" fill="#4a5466">Exclui referência sequencial, buffers MPI e runtime</text>
+</svg>
