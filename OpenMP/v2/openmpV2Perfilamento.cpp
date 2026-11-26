@@ -95,7 +95,7 @@ static void merge_perfilamento(vector<int>& dados, vector<int>& auxiliar, int in
     double fim_intercalacao = agora();
     for (int indice = inicio; indice < fim; indice++) dados[indice] = auxiliar[indice];
     double fim_copia = agora();
-    // várias threads atualizam a mesma tabela: cinco campos que mudam juntos (v2.md)
+    // várias threads atualizam a mesma tabela: cinco campos que mudam juntos (analises/v2.md)
     #pragma omp critical
     {
         registrar(niveis, nivel, fim - inicio, fim_intercalacao - inicio_intercalacao, fim_copia - fim_intercalacao);
@@ -124,7 +124,7 @@ static void merge_paralelo_perfilamento(vector<int>& dados, vector<int>& auxilia
         dados[indice] = auxiliar[indice];
     }
     double fim_copia = agora();
-    // várias threads atualizam a mesma tabela: cinco campos que mudam juntos (v2.md)
+    // várias threads atualizam a mesma tabela: cinco campos que mudam juntos (analises/v2.md)
     #pragma omp critical
     {
         registrar(niveis, nivel, fim - inicio, fim_intercalacao - inicio_intercalacao, fim_copia - fim_intercalacao);

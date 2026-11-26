@@ -14,7 +14,7 @@ struct Nivel {
 
 /* Soma o tempo de um merge na linha do seu nível.
  * Não é protegida contra várias threads: quem chama em paralelo deve
- * envolver a chamada com #pragma omp critical (ver OpenMP/v2/v2.md). */
+ * envolver a chamada com #pragma omp critical (ver OpenMP/v2/analises/v2.md). */
 inline void registrar(std::vector<Nivel>& niveis, int nivel, int tamanho, double t_sort, double t_copia) {
     if ((int)niveis.size() <= nivel) niveis.resize(nivel + 1);
     niveis[nivel].merges++;

@@ -10,7 +10,8 @@
 // Tempo atual em segundos (relógio monotônico).
 inline double agora() {
     timespec t; clock_gettime(CLOCK_MONOTONIC, &t);
-    return t.tv_sec + t.tv_nsec * 1e-9;
+    const double tempo_em_segundos = t.tv_sec + t.tv_nsec * 1e-9;
+    return tempo_em_segundos;
 }
 
 /* Gera o vetor de entrada exatamente como o baseline.cpp (semente fixa) */

@@ -2,7 +2,7 @@
 <title id="titulo">Eficiência paralela por número de threads</title>
 <desc id="descricao">Comparação de OpenMP v1 e v2 para 20 e 50 milhões de elementos. Eficiência = tempo do baseline / (threads × tempo paralelo) × 100. Ambos os painéis usam escala de 0 a 110%, com referência ideal em 100%. Tempos médios da Fase 1, com dez execuções após duas de aquecimento. Valores acima de 100% são preservados e não demonstram, isoladamente, uma vantagem estatística.</desc>
 <rect width="1000" height="520" fill="#ffffff"/>
-<!-- Fontes: baseline e perfilamento/perfilamento.md; OpenMP/v1/v1.md; OpenMP/v2/v2.md. Calculado a partir dos tempos, sem arredondamento intermediário do speedup. -->
+<!-- Fontes: baseline e perfilamento/perfilamento.md; OpenMP/v1/v1.md; OpenMP/v2/analises/v2.md. Calculado a partir dos tempos, sem arredondamento intermediário do speedup. -->
 <text x="500" y="26" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2230">Eficiência paralela por número de threads</text>
 <line x1="265.00" y1="53.00" x2="293.00" y2="53.00" stroke="#9aa3b2" stroke-width="2.5" stroke-dasharray="6 5"/>
 <text x="301" y="57" fill="#1a2230">Ideal (100%)</text>

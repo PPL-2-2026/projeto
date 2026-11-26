@@ -19,7 +19,7 @@ Os programas geram vetores de inteiros e verificam se o resultado está ordenado
 |---|---|
 | [baseline e perfilamento](baseline%20e%20perfilamento/) | Implementação sequencial, perfilamento e análise inicial |
 | [OpenMP/v1](OpenMP/v1/) | Recursão paralela e medições |
-| [OpenMP/v2](OpenMP/v2/) | Recursão e merge paralelos, medições e análise de escalabilidade |
+| [OpenMP/v2](OpenMP/v2/) | Recursão e merge paralelos, [medições e análise de escalabilidade](OpenMP/v2/analises/v2.md) |
 | [MPI/v1](MPI/v1/) | Implementação híbrida MPI + OpenMP e medições |
 | [utils](utils/) | Funções compartilhadas de ordenação, geração de dados e perfilamento |
 
