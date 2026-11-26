@@ -7,7 +7,7 @@
  *   Fase 2: onde o tempo é gasto, por nível (sort e cópia de cada merge)
  *
  * Compilar: g++ -O2 -fopenmp -o openmpV2Perfilamento openmpV2Perfilamento.cpp
- * Executar: OMP_NUM_THREADS=8 ./openmpV2Perfilamento [n=20000000] [reps=10] [aquec=2] [corte=2160]
+ * Executar: OMP_NUM_THREADS=8 ./openmpV2Perfilamento [tamanho_vetor=20000000] [repeticoes_medidas=10] [aquecimentos=2] [corte=2160]
  */
 #include <cstdio>
 #include <cstdlib>
@@ -22,67 +22,65 @@ using namespace std;
 
 /* ---------- versão paralela ---------- */
 
-/* Divide a intercalação em "partes" pedaços independentes.
+/* Divide a intercalação em trechos independentes.
  * O pivô (meio da metade maior) separa por valor: tudo que vai para a
  * primeira parte é <= tudo que vai para a segunda, e cada parte escreve
- * na sua própria faixa de tmp. Por isso as duas podem rodar ao mesmo tempo. */
-static void intercala_dividindo(const vector<int>& a, vector<int>& tmp,
-                                int l1, int r1, int l2, int r2, int k, int partes) {
-    int n1 = r1 - l1, n2 = r2 - l2;
-    if (partes <= 1 || n1 + n2 == 0) { // não divide mais, ou trecho vazio
-        intercala(a, tmp, l1, r1, l2, r2, k);
+ * na sua própria faixa do auxiliar. Por isso as duas podem rodar ao mesmo tempo. */
+static void intercala_dividindo(const vector<int>& dados, vector<int>& auxiliar,
+                                int inicio_esq, int fim_esq, int inicio_dir, int fim_dir, int inicio_saida, int particoes_do_trecho) {
+    int tamanho_esq = fim_esq - inicio_esq, tamanho_dir = fim_dir - inicio_dir;
+    if (particoes_do_trecho <= 1 || tamanho_esq + tamanho_dir == 0) { // não divide mais, ou trecho vazio
+        intercala(dados, auxiliar, inicio_esq, fim_esq, inicio_dir, fim_dir, inicio_saida);
         return;
     }
-    int m1, m2;
-    if (n1 >= n2) {   // divide a metade esquerda no meio
-        m1 = (l1 + r1) / 2;
-        m2 = lower_bound(a.begin() + l2, a.begin() + r2, a[m1]) - a.begin();
+    int corte_esq, corte_dir;
+    if (tamanho_esq >= tamanho_dir) {   // divide a metade esquerda no meio
+        corte_esq = (inicio_esq + fim_esq) / 2;
+        corte_dir = lower_bound(dados.begin() + inicio_dir, dados.begin() + fim_dir, dados[corte_esq]) - dados.begin();
     } else {          // divide a metade direita no meio
-        m2 = (l2 + r2) / 2;
-        m1 = upper_bound(a.begin() + l1, a.begin() + r1, a[m2]) - a.begin();
+        corte_dir = (inicio_dir + fim_dir) / 2;
+        corte_esq = upper_bound(dados.begin() + inicio_esq, dados.begin() + fim_esq, dados[corte_dir]) - dados.begin();
     }
-    int km = k + (m1 - l1) + (m2 - l2); // onde a segunda parte começa em tmp
+    int inicio_segunda_saida = inicio_saida + (corte_esq - inicio_esq) + (corte_dir - inicio_dir); // onde a segunda parte começa no auxiliar
 
-    #pragma omp task shared(a, tmp)
+    #pragma omp task shared(dados, auxiliar)
     {
-        intercala_dividindo(a, tmp, l1, m1, l2, m2, k, partes / 2);
+        intercala_dividindo(dados, auxiliar, inicio_esq, corte_esq, inicio_dir, corte_dir, inicio_saida, particoes_do_trecho / 2);
     }
-    intercala_dividindo(a, tmp, m1, r1, m2, r2, km, partes - partes / 2); // na thread atual
+    intercala_dividindo(dados, auxiliar, corte_esq, fim_esq, corte_dir, fim_dir, inicio_segunda_saida, particoes_do_trecho - particoes_do_trecho / 2); // na thread atual
     #pragma omp taskwait
 }
 
-// Merge dividido entre "partes" threads: intercalação e cópia de volta.
-static void merge_paralelo(vector<int>& a, vector<int>& tmp, int lo, int mid, int hi, int partes) {
-    if (partes <= 1) {
-        baseline_merge(a, tmp, lo, mid, hi);
+// Merge dividido em partições: intercalação e cópia de volta.
+static void merge_paralelo(vector<int>& dados, vector<int>& auxiliar, int inicio, int meio, int fim, int particoes_do_trecho) {
+    if (particoes_do_trecho <= 1) {
+        baseline_merge(dados, auxiliar, inicio, meio, fim);
         return;
     }
-    intercala_dividindo(a, tmp, lo, mid, mid, hi, lo, partes);
-    #pragma omp taskloop num_tasks(partes) shared(a, tmp)
-    for (int t = lo; t < hi; t++) {
-        a[t] = tmp[t];
+    intercala_dividindo(dados, auxiliar, inicio, meio, meio, fim, inicio, particoes_do_trecho);
+    #pragma omp taskloop num_tasks(particoes_do_trecho) shared(dados, auxiliar)
+    for (int indice = inicio; indice < fim; indice++) {
+        dados[indice] = auxiliar[indice];
     }
 }
 
-/* "partes" é quantas threads estão disponíveis para este trecho. Ele é
- * dividido ao meio a cada nível; quando chega a 1, o resto da subárvore
- * roda sequencial. Assim só os níveis de cima, que têm menos merges que
- * threads, usam o merge paralelo. */
-static void msort_paralelo(vector<int>& a, vector<int>& tmp, int lo, int hi, int partes) {
-    if (partes <= 1) {
-        baseline_msort(a, tmp, lo, hi);
+/* Cada chamada divide suas partições entre as duas metades. Com uma única
+ * partição, a subárvore é ordenada sequencialmente. */
+static void msort_paralelo(vector<int>& dados, vector<int>& auxiliar, int inicio, int fim, int particoes_do_trecho) {
+    if (particoes_do_trecho <= 1) {
+        baseline_msort(dados, auxiliar, inicio, fim);
         return;
     }
-    int mid = (lo + hi) / 2;
+    int meio = (inicio + fim) / 2;
     /* A metade esquerda vira task (outra thread executa) e a direita é feita
      * pela thread atual, ao mesmo tempo. */
-    #pragma omp task shared(a, tmp)
+    #pragma omp task shared(dados, auxiliar)
     {
-        msort_paralelo(a, tmp, lo, mid, partes / 2);
+        msort_paralelo(dados, auxiliar, inicio, meio, particoes_do_trecho / 2);
     }
-    msort_paralelo(a, tmp, mid, hi, partes - partes / 2);
+    msort_paralelo(dados, auxiliar, meio, fim, particoes_do_trecho - particoes_do_trecho / 2);
     #pragma omp taskwait
-    merge_paralelo(a, tmp, lo, mid, hi, partes);
+    merge_paralelo(dados, auxiliar, inicio, meio, fim, particoes_do_trecho);
 }
 
 /* ---------- versão instrumentada (mesmo protocolo do perfilamento.cpp) ---------- */
@@ -91,169 +89,169 @@ static int CORTE = 2160;
 static vector<Nivel> niveis;
 
 // Níveis de baixo (cada subárvore dentro de uma thread): igual ao perfilamento do baseline.
-static void merge_perfilamento(vector<int>& a, vector<int>& tmp, int lo, int mid, int hi, int nivel) {
-    double t0 = agora();
-    intercala(a, tmp, lo, mid, mid, hi, lo);
-    double t1 = agora();
-    for (int t = lo; t < hi; t++) a[t] = tmp[t];
-    double t2 = agora();
+static void merge_perfilamento(vector<int>& dados, vector<int>& auxiliar, int inicio, int meio, int fim, int nivel) {
+    double inicio_intercalacao = agora();
+    intercala(dados, auxiliar, inicio, meio, meio, fim, inicio);
+    double fim_intercalacao = agora();
+    for (int indice = inicio; indice < fim; indice++) dados[indice] = auxiliar[indice];
+    double fim_copia = agora();
     // várias threads atualizam a mesma tabela: cinco campos que mudam juntos (v2.md)
     #pragma omp critical
     {
-        registrar(niveis, nivel, hi - lo, t1 - t0, t2 - t1);
+        registrar(niveis, nivel, fim - inicio, fim_intercalacao - inicio_intercalacao, fim_copia - fim_intercalacao);
     }
 }
 
-static void msort_perfilamento(vector<int>& a, vector<int>& tmp, int lo, int hi, int nivel) {
-    if (hi - lo < CORTE || hi - lo <= 1) {
-        baseline_msort(a, tmp, lo, hi);
+static void msort_perfilamento(vector<int>& dados, vector<int>& auxiliar, int inicio, int fim, int nivel) {
+    if (fim - inicio < CORTE || fim - inicio <= 1) {
+        baseline_msort(dados, auxiliar, inicio, fim);
         return;
     }
-    int mid = (lo + hi) / 2;
-    msort_perfilamento(a, tmp, lo, mid, nivel + 1);
-    msort_perfilamento(a, tmp, mid, hi, nivel + 1);
-    merge_perfilamento(a, tmp, lo, mid, hi, nivel);
+    int meio = (inicio + fim) / 2;
+    msort_perfilamento(dados, auxiliar, inicio, meio, nivel + 1);
+    msort_perfilamento(dados, auxiliar, meio, fim, nivel + 1);
+    merge_perfilamento(dados, auxiliar, inicio, meio, fim, nivel);
 }
 
 // Níveis de cima: o merge paralelo inteiro (todas as partes) é cronometrado como um merge só.
-static void merge_paralelo_perfilamento(vector<int>& a, vector<int>& tmp,
-                                        int lo, int mid, int hi, int partes, int nivel) {
-    double t0 = agora();
-    intercala_dividindo(a, tmp, lo, mid, mid, hi, lo, partes);
-    double t1 = agora();
-    #pragma omp taskloop num_tasks(partes) shared(a, tmp)
-    for (int t = lo; t < hi; t++) {
-        a[t] = tmp[t];
+static void merge_paralelo_perfilamento(vector<int>& dados, vector<int>& auxiliar,
+                                        int inicio, int meio, int fim, int particoes_do_trecho, int nivel) {
+    double inicio_intercalacao = agora();
+    intercala_dividindo(dados, auxiliar, inicio, meio, meio, fim, inicio, particoes_do_trecho);
+    double fim_intercalacao = agora();
+    #pragma omp taskloop num_tasks(particoes_do_trecho) shared(dados, auxiliar)
+    for (int indice = inicio; indice < fim; indice++) {
+        dados[indice] = auxiliar[indice];
     }
-    double t2 = agora();
+    double fim_copia = agora();
     // várias threads atualizam a mesma tabela: cinco campos que mudam juntos (v2.md)
     #pragma omp critical
     {
-        registrar(niveis, nivel, hi - lo, t1 - t0, t2 - t1);
+        registrar(niveis, nivel, fim - inicio, fim_intercalacao - inicio_intercalacao, fim_copia - fim_intercalacao);
     }
 }
 
-static void msort_paralelo_perfilamento(vector<int>& a, vector<int>& tmp,
-                                        int lo, int hi, int partes, int nivel) {
-    if (partes <= 1) {
-        msort_perfilamento(a, tmp, lo, hi, nivel);
+static void msort_paralelo_perfilamento(vector<int>& dados, vector<int>& auxiliar,
+                                        int inicio, int fim, int particoes_do_trecho, int nivel) {
+    if (particoes_do_trecho <= 1) {
+        msort_perfilamento(dados, auxiliar, inicio, fim, nivel);
         return;
     }
-    int mid = (lo + hi) / 2;
-    #pragma omp task shared(a, tmp)
+    int meio = (inicio + fim) / 2;
+    #pragma omp task shared(dados, auxiliar)
     {
-        msort_paralelo_perfilamento(a, tmp, lo, mid, partes / 2, nivel + 1);
+        msort_paralelo_perfilamento(dados, auxiliar, inicio, meio, particoes_do_trecho / 2, nivel + 1);
     }
-    msort_paralelo_perfilamento(a, tmp, mid, hi, partes - partes / 2, nivel + 1);
+    msort_paralelo_perfilamento(dados, auxiliar, meio, fim, particoes_do_trecho - particoes_do_trecho / 2, nivel + 1);
     #pragma omp taskwait
-    merge_paralelo_perfilamento(a, tmp, lo, mid, hi, partes, nivel);
+    merge_paralelo_perfilamento(dados, auxiliar, inicio, meio, fim, particoes_do_trecho, nivel);
 }
 
 /* ---------- protocolo de medição ---------- */
 
 /* ---- Fase 1: wall time da versão paralela, validado contra o baseline ---- */
-static double fase1(vector<int>& a, vector<int>& tmp, const vector<int>& referencia,
-                    int threads, int reps, int aquec) {
-    int n = (int)a.size();
+static double fase1(vector<int>& dados, vector<int>& auxiliar, const vector<int>& referencia,
+                    int max_threads, int repeticoes_medidas, int aquecimentos) {
+    int tamanho_vetor = (int)dados.size();
     double tempo_medio = 0.0;
-    for (int r = 0; r < aquec + reps; r++) {
+    for (int repeticao = 0; repeticao < aquecimentos + repeticoes_medidas; repeticao++) {
         // Toda repetição usa o mesmo vetor inicial
-        gerar_vetor(a);
-        double t0 = agora();
+        gerar_vetor(dados);
+        double inicio_ordenacao = agora();
         #pragma omp parallel
         {
             #pragma omp single
             {
-                msort_paralelo(a, tmp, 0, n, threads);
+                msort_paralelo(dados, auxiliar, 0, tamanho_vetor, max_threads);
             }
         }
-        double dt = agora() - t0;
+        double duracao_ordenacao = agora() - inicio_ordenacao;
         // Aquecimento é descartado
-        if (r >= aquec) tempo_medio += dt;
+        if (repeticao >= aquecimentos) tempo_medio += duracao_ordenacao;
     }
-    tempo_medio /= reps; // média das repetições
+    tempo_medio /= repeticoes_medidas; // média das repetições
     // validação: o resultado tem que ser idêntico, elemento a elemento, ao do baseline
-    bool igual = (a == referencia);
-    printf("\n[Fase 1] tempo por ordenacao=%.6f s  igual ao baseline=%s\n", tempo_medio, igual ? "SIM" : "NAO");
+    bool igual_ao_baseline = (dados == referencia);
+    printf("\n[Fase 1] tempo por ordenacao=%.6f s  igual ao baseline=%s\n", tempo_medio, igual_ao_baseline ? "SIM" : "NAO");
     return tempo_medio;
 }
 
 /* ---- Fase 2: onde o tempo é gasto (média das repetições) ---- */
-static void fase2(vector<int>& a, vector<int>& tmp, const vector<int>& referencia,
-                  int threads, int reps, int aquec, double tempo_fase1) {
-    int n = (int)a.size();
+static void fase2(vector<int>& dados, vector<int>& auxiliar, const vector<int>& referencia,
+                  int max_threads, int repeticoes_medidas, int aquecimentos, double tempo_fase1) {
+    int tamanho_vetor = (int)dados.size();
     double total_perfilamento = 0.0;
-    for (int r = 0; r < aquec + reps; r++) {
-        if (r == aquec) { // descarta o aquecimento
+    for (int repeticao = 0; repeticao < aquecimentos + repeticoes_medidas; repeticao++) {
+        if (repeticao == aquecimentos) { // descarta o aquecimento
             niveis.clear(); total_perfilamento = 0.0;
         }
-        gerar_vetor(a); // mesma entrada a cada repetição
-        double t0 = agora();
+        gerar_vetor(dados); // mesma entrada a cada repetição
+        double inicio_ordenacao = agora();
         #pragma omp parallel
         {
             #pragma omp single
             {
-                msort_paralelo_perfilamento(a, tmp, 0, n, threads, 0);
+                msort_paralelo_perfilamento(dados, auxiliar, 0, tamanho_vetor, max_threads, 0);
             }
         }
-        total_perfilamento += agora() - t0;
+        total_perfilamento += agora() - inicio_ordenacao;
     }
-    bool igual = (a == referencia);
-    double media = total_perfilamento / reps;
+    bool igual_ao_baseline = (dados == referencia);
+    double tempo_medio_instrumentado = total_perfilamento / repeticoes_medidas;
 
     printf("\n[Fase 2] onde o tempo e gasto (media de %d repeticoes)  igual ao baseline=%s\n",
-           reps, igual ? "SIM" : "NAO");
+           repeticoes_medidas, igual_ao_baseline ? "SIM" : "NAO");
     // Cabeçalho da tabela
     printf("  %5s %10s %7s %11s %11s %11s %11s\n",
            "nivel", "tamanho", "merges", "sort", "copia", "total", "maior");
     double soma_sort = 0.0, soma_copia = 0.0, caminho_critico = 0.0;
     // Linhas da tabela
-    for (size_t d = 0; d < niveis.size(); d++) {
-        double tempo_sort = niveis[d].sort / reps;
-        double copia = niveis[d].copia / reps;
+    for (size_t nivel = 0; nivel < niveis.size(); nivel++) {
+        double tempo_sort = niveis[nivel].sort / repeticoes_medidas;
+        double copia = niveis[nivel].copia / repeticoes_medidas;
         double total = tempo_sort + copia;
-        long long merges = niveis[d].merges / reps;
+        long long merges = niveis[nivel].merges / repeticoes_medidas;
         soma_sort += tempo_sort;
         soma_copia += copia;
-        caminho_critico += niveis[d].maior;
+        caminho_critico += niveis[nivel].maior;
         printf("  %5zu %10d %7lld %10.6fs %10.6fs %10.6fs %10.6fs\n",
-               d, niveis[d].tamanho, merges, tempo_sort, copia, total, niveis[d].maior);
+               nivel, niveis[nivel].tamanho, merges, tempo_sort, copia, total, niveis[nivel].maior);
     }
     double soma_merges = soma_sort + soma_copia;
     double percentual_sort = 100.0 * soma_sort / soma_merges;
     double percentual_copia = 100.0 * soma_copia / soma_merges;
-    double custo_instrumentacao = 100.0 * (media - tempo_fase1) / tempo_fase1;
+    double custo_instrumentacao = 100.0 * (tempo_medio_instrumentado - tempo_fase1) / tempo_fase1;
 
     // os merges de um mesmo nível rodam ao mesmo tempo, então as somas são tempo de trabalho das threads
     printf("\n  merges grandes, somando as threads: %.6f s\n", soma_merges);
     printf("    sort:                        %.6f s (%5.1f%% dos merges grandes)\n", soma_sort, percentual_sort);
     printf("    copia de volta:              %.6f s (%5.1f%% dos merges grandes)\n", soma_copia, percentual_copia);
     printf("  caminho critico (soma da coluna maior): %.6f s\n", caminho_critico);
-    printf("  total instrumentado: %.6f s  (custo da instrumentacao: %+.1f%% vs Fase 1)\n", media, custo_instrumentacao);
+    printf("  total instrumentado: %.6f s  (custo da instrumentacao: %+.1f%% vs Fase 1)\n", tempo_medio_instrumentado, custo_instrumentacao);
 }
 
 int main(int argc, char** argv) {
-    int n = (argc > 1) ? atoi(argv[1]) : 20000000;
-    int reps = (argc > 2) ? atoi(argv[2]) : 10;
-    int aquec = (argc > 3) ? atoi(argv[3]) : 2;
+    int tamanho_vetor = (argc > 1) ? atoi(argv[1]) : 20000000;
+    int repeticoes_medidas = (argc > 2) ? atoi(argv[2]) : 10;
+    int aquecimentos = (argc > 3) ? atoi(argv[3]) : 2;
     CORTE = (argc > 4) ? atoi(argv[4]) : 2160;
-    int threads = omp_get_max_threads();
+    int max_threads = omp_get_max_threads();
 
-    vector<int> a(n), tmp(n);
+    vector<int> dados(tamanho_vetor), auxiliar(tamanho_vetor);
 
     // resultado de referência: o mesmo vetor ordenado pelo msort do baseline (fora do cronômetro)
-    vector<int> referencia(n);
+    vector<int> referencia(tamanho_vetor);
     gerar_vetor(referencia);
-    baseline_msort(referencia, tmp, 0, n);
+    baseline_msort(referencia, auxiliar, 0, tamanho_vetor);
 
     printf("n=%d  (a + tmp = %.1f MiB)  threads=%d  reps=%d  aquecimento=%d  corte=%d\n",
-           n, 2.0 * n * sizeof(int) / (1024.0 * 1024.0), threads, reps, aquec, CORTE);
+           tamanho_vetor, 2.0 * tamanho_vetor * sizeof(int) / (1024.0 * 1024.0), max_threads, repeticoes_medidas, aquecimentos, CORTE);
 
-    double tempo_fase1 = fase1(a, tmp, referencia, threads, reps, aquec);
-    if (n < CORTE) {
+    double tempo_fase1 = fase1(dados, auxiliar, referencia, max_threads, repeticoes_medidas, aquecimentos);
+    if (tamanho_vetor < CORTE) {
         printf("\n[Fase 2] ignorada: n menor que o corte (%d)\n", CORTE);
         return 0;
     }
-    fase2(a, tmp, referencia, threads, reps, aquec, tempo_fase1);
+    fase2(dados, auxiliar, referencia, max_threads, repeticoes_medidas, aquecimentos, tempo_fase1);
     return 0;
 }
