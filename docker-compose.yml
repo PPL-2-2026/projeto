@@ -1,17 +1,17 @@
 # Uso:
 #   docker compose run --rm baseline
-#   docker compose run --rm mergesort
-#   docker compose run --rm mergesect
+#   docker compose run --rm openmpv1
+#   docker compose run --rm openmpv2
 #   docker compose run --rm perfilamento
-#   N=1000000 docker compose run --rm mergesect      # tamanho do vetor
-#   THREADS=8 docker compose run --rm mergesect      # threads OpenMP
+#   N=1000000 docker compose run --rm openmpv2      # tamanho do vetor
+#   THREADS=8 docker compose run --rm openmpv2      # threads OpenMP
 #
 # O código é montado como volume e compilado a cada execução,
 # então não é preciso rebuild da imagem ao editar os .cpp.
 
 x-cpp: &cpp
   build: .
-  image: mergesort-cpp
+  image: ordenacao-cpp
   working_dir: /app
   user: "${UID:-1000}:${GID:-1000}"
   volumes:
@@ -27,19 +27,33 @@ services:
              g++ -O2 -o bin/baseline "baseline e perfilamento/baseline.cpp" &&
              ./bin/baseline ${N:-20000000}'
 
-  mergesort:
+  openmpv1:
     <<: *cpp
     command: >
       sh -c 'mkdir -p bin &&
-             g++ -O2 -o bin/mergesort mergesort.cpp &&
-             ./bin/mergesort ${N:-20000000}'
+             g++ -O2 -fopenmp -o bin/openmpv1 OpenMP/v1/openmp.cpp &&
+             ./bin/openmpv1 ${N:-20000000}'
 
-  mergesect:
+  openmpv2:
     <<: *cpp
     command: >
       sh -c 'mkdir -p bin &&
-             g++ -O2 -fopenmp -o bin/mergesect mergesect.cpp &&
-             ./bin/mergesect ${N:-20000000}'
+             g++ -O2 -fopenmp -o bin/openmpv2 OpenMP/v2/openmp.cpp &&
+             ./bin/openmpv2 ${N:-20000000}'
+
+  openmpv1perfilamento:
+    <<: *cpp
+    command: >
+      sh -c 'mkdir -p bin &&
+             g++ -O2 -g -fopenmp -o bin/openmpv1perfilamento OpenMP/v1/openmpV1Perfilamento.cpp &&
+             ./bin/openmpv1perfilamento ${N:-20000000} ${REPS:-10} ${AQUEC:-2} ${CORTE:-2160}'
+
+  openmpv2perfilamento:
+    <<: *cpp
+    command: >
+      sh -c 'mkdir -p bin &&
+             g++ -O2 -g -fopenmp -o bin/openmpv2perfilamento OpenMP/v2/openmpV2Perfilamento.cpp &&
+             ./bin/openmpv2perfilamento ${N:-20000000} ${REPS:-10} ${AQUEC:-2} ${CORTE:-2160}'
 
   perfilamento:
     <<: *cpp
